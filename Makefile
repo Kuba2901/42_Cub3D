@@ -54,11 +54,29 @@ endif
 clean:
 	@rm -rf $(OBJS)
 	@cd $(LIBLIBFT) && make clean
-	@cd $(LIBMLX) && make clean
+	@cd $(LIBMLX) && ./configure clean
 
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -f $(LIBLIBFT)/libft.a
+	@rm -f $(LIBMLX)/libmlx.a
+
+configure:
+	@echo "Installing MLX..."
+	@if [ ! -d "./lib/mlx_linux" ]; then \
+		echo "Cloning MLX repository..."; \
+		git clone https://github.com/42Paris/minilibx-linux ./lib/mlx_linux; \
+	else \
+		echo "MLX repository already exists. Skipping clone."; \
+	fi
+	@if [ ! -d "./lib/mlx_mac" ]; then \
+		echo "Copying MLX to macOS directory..."; \
+		cp -r ./lib/mlx_linux ./lib/mlx_mac; \
+	else \
+		echo "MLX macOS directory already exists. Skipping copy."; \
+	fi
+	@echo "Configuring MLX..."
+	@cd $(LIBMLX) && ./configure
 
 re: clean all
 
