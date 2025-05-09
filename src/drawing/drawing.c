@@ -151,7 +151,7 @@ void	draw_calculate_and_draw_single_stripe(int x, t_cube *cube)
 	draw_textured_vertical_slice(x, cube);
 }
 
-static void draw_clear_screen(t_cube *cube)
+void draw_clear_screen(t_cube *cube)
 {
 	if (cube->mlx_handler->mlx_img->img != NULL) {
 		mlx_destroy_image(cube->mlx_handler->mlx, cube->mlx_handler->mlx_img->img);

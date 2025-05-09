@@ -2,6 +2,11 @@
 # define CUBE_DRAWING_H
 
 # define DRAW_CEILING_COLOR 0xFF87CEEB
+# define DRAW_BLACK_COLOR 0x000000
+# define DRAW_WHITE_COLOR 0xFFFFFF
+
+# define CREDITS_PATH "./assets/credits.txt"
+# define CREDITS_CHAR_WIDTH 6
 
 typedef struct	s_draw_horizontal_data
 {
@@ -50,5 +55,7 @@ typedef struct	s_image_data	t_image_data;
 
 void	draw_scene(t_cube *cube);
 void	draw_my_mlx_pixel_put(t_image_data *data, int x, int y, int color);
+void    credits_display(t_cube *cube);
+void	draw_clear_screen(t_cube *cube);
 
 #endif

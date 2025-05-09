@@ -1,0 +1,19 @@
+CUB3D
+
+DEVELOPMENT TEAM
+Graphical part: <name1>
+Parsing part: <name2>
+Animations: <name1>
+
+ASSETS
+Mushroom Sprite Author: https://monopixelart.itch.io
+Wall ceiling floor and elevator textures: ChatGPT
+
+SPECIAL THANKS
+Lode Vandevenne (lodev.org/cgtutor/raycasting.html)
+for the outstanding raycasting tutorial
+
+The incredible 42 community
+All 42 Students and Staff
+
+Thank you for playing!

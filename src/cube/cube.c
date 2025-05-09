@@ -6,6 +6,7 @@
 #include <cube_runtime.h>
 #include <cube_dda.h>
 #include <stdio.h>
+#include <cube_drawing.h>
 
 t_cube	*cube_cube_init(char **map, int width, int height, const char **tex_paths)
 {
@@ -44,6 +45,7 @@ t_cube	*cube_cube_init(char **map, int width, int height, const char **tex_paths
 
 void	cube_cube_free(t_cube *cube)
 {
+	credits_display(cube);
 	cube->runtime_handler->running = FALSE;
 	map_map_free(cube->map);
 	input_handler_free(cube->input_handler);

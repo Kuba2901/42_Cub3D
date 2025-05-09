@@ -84,6 +84,16 @@ static void	animate_sprites(t_cube *cube)
 
 int game_loop_hook(t_cube *cube)
 {
+	t_location	exit_loc;
+	t_location	player_loc;
+
+	player_loc = cube->entities->player->base->current_location;
+	exit_loc = cube->entities->exit->base->current_location;
+	if ((int)player_loc.x == (int)exit_loc.x && (int)player_loc.y == (int)exit_loc.y)
+	{
+		cube_cube_free(cube);
+		return (0);
+	}
 	if (!cube->runtime_handler->running)
 	{
 		cube_cube_free(cube);
