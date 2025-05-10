@@ -59,12 +59,12 @@ int	main( void )
 	t_cube	*cube;
 
 	cube = cube_cube_init((char **)map, MAP_SIZE, 4, paths);
-	// mlx_mouse_hide(cube->mlx_handler->mlx, cube->mlx_handler->mlx_win);
+	mlx_mouse_hide(cube->mlx_handler->mlx, cube->mlx_handler->mlx_win);
 	mlx_hook(cube->mlx_handler->mlx_win, 2, 1L << 0, input_handler_key_press, cube);
 	mlx_hook(cube->mlx_handler->mlx_win, 3, 1L << 1, input_handler_key_release, cube);		
 	mlx_hook(cube->mlx_handler->mlx_win, DestroyNotify,
 		StructureNotifyMask, &lifecycle_on_destroy, cube);
-	// mlx_hook(cube->mlx_handler->mlx_win, 6, 1L << 6, input_handler_mouse_movement, cube);
+	mlx_hook(cube->mlx_handler->mlx_win, 6, 1L << 6, input_handler_mouse_movement, cube);
 	mlx_loop_hook(cube->mlx_handler->mlx, lifecycle_game_loop, cube);
 	mlx_loop(cube->mlx_handler->mlx);
 	return (EXIT_SUCCESS);
