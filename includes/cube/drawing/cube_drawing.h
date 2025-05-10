@@ -70,5 +70,6 @@ void						credits_lines_free(char **lines);
 char						**credits_lines_load(void);;
 void						draw_textured(t_draw_vertical_slice_data *data,
 	t_cube *cube, int y);
+void						draw_render_floor_and_ceiling(t_cube *cube);
 
 #endif

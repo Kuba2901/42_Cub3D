@@ -82,5 +82,23 @@ t_entities			*entities_entities_init(t_entities_config config);
 void				entities_entities_free(t_entities *entities);
 t_entities_config	entities_entities_config_init(t_cube_settings *cube_settings);
 void				sprites_draw(t_cube *cube);
+void				entities_enemies_multiple_free(t_enemy **enemies);
+t_enemy				**entities_enemies_multiple_init(t_point **enemy_locations,
+	t_animated_frames *frames_ptr);
+void				entities_enemy_free(t_enemy *enemy);
+t_enemy				*entities_enemy_init(t_point pt, t_animated_frames *frames_ptr);
+t_entity			*entities_entity_init(t_point pt, t_entity_type type,
+	t_animated_frames *frames_ptr);
+void				entities_entity_free(t_entity *entity);
+void				entities_exit_free(t_exit *exit_entity);
+t_exit				*entities_exit_init(t_point pt, t_animated_frames *idle_frames_ptr,
+	t_animated_frames *open_frames_ptr);
+void				entities_player_free(t_player *player);
+t_player			*entities_player_init(t_point pt);
+t_entities			*entities_allocate(void);
+int					entities_init_exit(t_entities *entities, t_entities_config config);
+int					entities_init_enemies(t_entities *entities, t_entities_config config);
+int					entities_init_player(t_entities *entities, t_entities_config config);
+int					entities_allocate_sprites(t_entities *entities, int num_enemies);
 
 #endif

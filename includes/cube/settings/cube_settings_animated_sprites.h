@@ -26,6 +26,29 @@
 
 # include <stdlib.h>
 
+typedef struct s_sprite_data
+{
+	double	transform_x;
+	double	transform_y;
+	int		screen_x;
+	int		height;
+	int		width;
+	int		draw_start_y;
+	int		draw_end_y;
+	int		draw_start_x;
+	int		draw_end_x;
+}	t_sprite_data;
+
+typedef struct s_sprite_tex_data
+{
+	int				tex_x;
+	int				tex_y;
+	size_t			*tex;
+	unsigned int	color;
+}	t_sprite_tex_data;
+
+
+
 typedef struct	s_animated_frames
 {
 	size_t	**frames;
