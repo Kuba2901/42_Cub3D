@@ -3,7 +3,13 @@
 
 typedef struct	s_cube	t_cube;
 
-int	game_loop_hook(t_cube *cube);
-int	on_destroy(t_cube *cube);
+/* lifecycle.c */
+int		lifecycle_on_destroy(t_cube *cube);
+double	lifecycle_get_ticks(void);
+int		lifecycle_game_loop(t_cube *cube);
+
+/* lifecycle_animation.c */
+void	lifecycle_animate_sprites(t_cube *cube);
+
 
 #endif
