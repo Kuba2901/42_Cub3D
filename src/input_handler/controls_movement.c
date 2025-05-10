@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:38:57 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:52:11 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:13:15 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,14 @@ void	handle_left_right(t_cube *cube, double move_speed)
 	side_dir.dir_y = player->dir.dir_x;
 	if (keys->a)
 	{
-		new_x = player->base->current_location.x + side_dir.dir_x * move_speed;
-		new_y = player->base->current_location.y + side_dir.dir_y * move_speed;
-		move_player(cube, new_x, new_y);
+		new_x = player->base->current_location.x - side_dir.dir_x * move_speed;
+		new_y = player->base->current_location.y - side_dir.dir_y * move_speed;
+		move_player(cube, new_x, new_y);		
 	}
 	else if (keys->d)
 	{
-		new_x = player->base->current_location.x - side_dir.dir_x * move_speed;
-		new_y = player->base->current_location.y - side_dir.dir_y * move_speed;
+		new_x = player->base->current_location.x + side_dir.dir_x * move_speed;
+		new_y = player->base->current_location.y + side_dir.dir_y * move_speed;
 		move_player(cube, new_x, new_y);
 	}
 }
