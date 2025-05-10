@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/09 20:51:32 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:24:05 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ t_cube	*cube_cube_init(char **map, int width, int height,
 
 void	cube_cube_free(t_cube *cube)
 {
-	credits_display(cube);
+	if (cube->runtime_handler->display_credits)
+		credits_display(cube);
 	cube->runtime_handler->running = FALSE;
 	map_map_free(cube->map);
 	input_handler_free(cube->input_handler);

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 22:03:17 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:28:58 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ t_draw_vertical_slice_data	draw_prep_vertical_slice_data(
 		<= '0' + TEXTURE_TYPES_COUNT)
 		data.tex_type = (int)draw_prep_determine_face_hit(dda);
 	data.tex_x = (int)(draw_prep_get_wall_x(cube) * (double)TEXTURE_SIZE);
-	if (dda->hit_type == HORIZONTAL && dda->ray_dir.dir_x < 0)  // Changed > to 
+	if (dda->hit_type == HORIZONTAL && dda->ray_dir.dir_x < 0)
 		data.tex_x = TEXTURE_SIZE - data.tex_x - 1;
-	if (dda->hit_type == VERTICAL && dda->ray_dir.dir_y > 0)    // Changed < to >
+	if (dda->hit_type == VERTICAL && dda->ray_dir.dir_y > 0)
 		data.tex_x = TEXTURE_SIZE - data.tex_x - 1;
 	data.wall_top = ((WINDOW_HEIGHT / 2.0) - (dda->wall_height / 2.0));
 	data.wall_bottom = ((WINDOW_HEIGHT / 2.0) + (dda->wall_height / 2.0));
