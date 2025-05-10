@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 22:33:39 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:36:11 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,9 @@ static t_tex_type	draw_prep_determine_face_hit(t_dda_data *dda)
 	if (dda->hit_type == HORIZONTAL)
 	{
 		if (dda->step_x > 0)
-		return (TEX_TYPE_SOUTH);
-			else
-		return (TEX_TYPE_NORTH);
+			return (TEX_TYPE_SOUTH);
+		else
+			return (TEX_TYPE_NORTH);
 	}
 	else
 	{
