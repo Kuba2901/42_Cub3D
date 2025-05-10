@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:38:57 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:48:36 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:12:00 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <math.h>
 #include <cube_controls.h>
 
-void	handle_rotation_right(t_cube *cube, double r_speed)
+void	handle_rotation_left(t_cube *cube, double r_speed)
 {
 	t_player	*player;
 	t_vector	dir_vect;
@@ -29,13 +29,13 @@ void	handle_rotation_right(t_cube *cube, double r_speed)
 		+ player->dir.dir_y * cos(-r_speed);
 	camera_vect.dir_x = player->camera.dir_x * cos(-r_speed)
 		- player->camera.dir_y * sin(-r_speed);
-	camera_vect.dir_y = player->camera.dir_x * sin(-r_speed)
-		+ player->camera.dir_y * cos(-r_speed);
+	camera_vect.dir_y = player->camera.dir_y * cos(-r_speed)
+		+ player->camera.dir_x * sin(-r_speed);
 	player->dir = dir_vect;
 	player->camera = camera_vect;
 }
 
-void	handle_rotation_left(t_cube *cube, double r_speed)
+void	handle_rotation_right(t_cube *cube, double r_speed)
 {
 	t_player	*player;
 	t_vector	dir_vect;
@@ -48,8 +48,8 @@ void	handle_rotation_left(t_cube *cube, double r_speed)
 		+ player->dir.dir_y * cos(r_speed);
 	camera_vect.dir_x = player->camera.dir_x * cos(r_speed)
 		- player->camera.dir_y * sin(r_speed);
-	camera_vect.dir_y = player->camera.dir_x * sin(r_speed)
-		+ player->camera.dir_y * cos(r_speed);
+	camera_vect.dir_y = player->camera.dir_y * cos(r_speed)
+		+ player->camera.dir_x * sin(r_speed);
 	player->dir = dir_vect;
 	player->camera = camera_vect;
 }

@@ -6,13 +6,14 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 18:28:13 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:27:34 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <cube.h>
 #include <cube_mlx_handler.h>
 #include <cube_drawing.h>
+#include <cube_runtime.h>
 #include <mlx.h>
 #include <libft.h>
 #include <fcntl.h>
@@ -61,6 +62,7 @@ void	credits_display(t_cube *cube)
 	int		i;
 	int		current_y;
 
+	cube->runtime_handler->displaying_credits = TRUE;
 	lines = credits_lines_load();
 	y_pos = WINDOW_HEIGHT;
 	while (y_pos + (CREDITS_LINE_HEIGHT * 2) > 0)

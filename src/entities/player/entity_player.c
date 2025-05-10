@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 19:58:18 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:14:16 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 22:12:47 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ t_player	*entities_player_init(t_point pt)
 		return (NULL);
 	}
 	player->dir = entities_player_get_orientation(pt);
-	player->camera.dir_x = player->dir.dir_y * FOV;
-	player->camera.dir_y = -player->dir.dir_x * FOV;
+	player->camera.dir_x = -player->dir.dir_y * FOV;
+	player->camera.dir_y = player->dir.dir_x * FOV;
 	return (player);
 }
 
