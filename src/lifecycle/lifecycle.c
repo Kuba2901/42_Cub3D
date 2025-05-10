@@ -102,7 +102,7 @@ int game_loop_hook(t_cube *cube)
 	cube->runtime_handler->old_time = cube->runtime_handler->time;
 	cube->runtime_handler->time = framerate_get_ticks();
 	animate_sprites(cube);
-	draw_scene(cube);
+	draw_render_scene(cube);
 	mov_handler(cube);
 	return (0);
 }

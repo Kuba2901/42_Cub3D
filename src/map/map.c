@@ -2,7 +2,18 @@
 #include <cube.h>
 #include <cube_settings.h>
 #include <cube_entities.h>
+#include <cube_dda.h>
 #include <stdlib.h>
+
+int	map_dda_is_hit(t_cube *cube, t_point pt)
+{
+	t_dda_data	*dda;
+
+	dda = cube->dda_data;
+	return (!map_is_within_bounds(pt.x, pt.y, *cube->map) \
+		|| cube->map->tiles[dda->map_y][dda->map_x].c == '1' \
+		|| cube->map->tiles[dda->map_y][dda->map_x].c == 'Q');
+}
 
 t_bool	map_is_within_bounds(int x, int y, t_map map)
 {
