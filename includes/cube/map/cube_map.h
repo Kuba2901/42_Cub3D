@@ -36,5 +36,6 @@ void	map_map_free(t_map *map);
 t_bool	map_is_within_bounds(int x, int y, t_map map);
 t_bool	map_is_walkable(t_point pt);
 t_bool	map_is_door_open(t_cube *cube);
+int		map_dda_is_hit(t_cube *cube, t_point pt);
 
 #endif

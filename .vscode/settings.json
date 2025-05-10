@@ -44,6 +44,7 @@
 		"tuple": "c",
 		"variant": "c",
 		"fstream": "c",
-		"locale": "c"
+		"locale": "c",
+		"cube_sprites.h": "c"
 	}
 }

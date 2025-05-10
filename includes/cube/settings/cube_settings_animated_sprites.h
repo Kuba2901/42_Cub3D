@@ -25,7 +25,6 @@
 # define ANIM_EXIT_OPEN_FRAMES_COUNT 6
 
 # include <stdlib.h>
-
 typedef struct	s_animated_frames
 {
 	size_t	**frames;
