@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:57:33 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/10 21:54:38 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,41 @@ static void	lifecycle_animate_enemy(t_enemy *enemy)
 	}
 }
 
+static void	lifecycle_animate_exit_handle_open(t_cube *cube, int frame)
+{
+	t_animation_controller	*controller;
+
+	controller = cube->entities->exit->base->controller;
+	if (frame >= controller->current->frames_ptr->frames_count
+		&& !controller->repeat)
+	{
+		--controller->current->frame;
+	}
+	else
+	{
+		controller->current->frame
+			= frame % (controller->current->frames_ptr->frames_count);
+	}
+}
+
+static void	lifecycle_animate_exit_aux(t_cube *cube)
+{
+	t_animation_controller	*controller;
+
+	controller = cube->entities->exit->base->controller;
+	if (controller->current->frame == 0)
+	{
+		cube->entities->exit->unlocked = FALSE;
+		controller->playing = FALSE;
+	}
+	else if (controller->current->frame
+		== controller->current->frames_ptr->frames_count - 1)
+	{
+		cube->entities->exit->unlocked = TRUE;
+		controller->playing = FALSE;
+	}
+}
+
 static void	lifecycle_animate_exit(t_cube *cube)
 {
 	int						frame;
@@ -49,19 +84,8 @@ static void	lifecycle_animate_exit(t_cube *cube)
 			frame = --controller->current->frame;
 		else
 			frame = ++controller->current->frame;
-		if (frame >= controller->current->frames_ptr->frames_count
-			&& !controller->repeat)
-		{
-			controller->playing = FALSE;
-			--controller->current->frame;
-		}
-		else
-			controller->current->frame
-				= frame % (controller->current->frames_ptr->frames_count);
-		if (controller->current->frame == 0)
-			cube->entities->exit->unlocked = FALSE;
-		else if (controller->current->frame == ANIM_EXIT_OPEN_FRAMES_COUNT - 1)
-			cube->entities->exit->unlocked = TRUE;
+		lifecycle_animate_exit_handle_open(cube, frame);
+		lifecycle_animate_exit_aux(cube);
 	}
 }
 
