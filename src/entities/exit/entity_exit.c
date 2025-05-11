@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   entity_exit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 19:58:18 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:13:32 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:17:01 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ t_exit	*entities_exit_init(t_point pt, t_animated_frames *idle_frames_ptr,
 	}
 	anim_animation_controller_set_animation(
 		ret->base->controller, ANIM_TYPE_OPEN, open_frames_ptr);
-	ret->unlocked = FALSE;
+	ret->unlocked = CUBE_FALSE;
 	return (ret);
 }
 

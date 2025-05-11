@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:22:53 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:37:53 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:53:23 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	sprite_sort(int *order, double *dist, int amount)
 	int		j;
 
 	i = -1;
-	while (++i < amount)
+	while (++i < amount - 1)
 	{
 		j = -1;
-		while (++j < amount)
+		while (++j < amount - 1)
 		{
 			if (dist[j] < dist[j + 1])
 			{

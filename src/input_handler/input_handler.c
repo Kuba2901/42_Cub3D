@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:38:32 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:38:44 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:17:33 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ t_input_handler	*input_handler_init( void )
 		safe_free(input_handler);
 		return (NULL);
 	}
-	mouse.show = FALSE;
-	mouse.enable = FALSE;
+	mouse.show = CUBE_FALSE;
+	mouse.enable = CUBE_FALSE;
 	mouse.x = WINDOW_CENTER_X;
 	mouse.y = WINDOW_CENTER_Y;
 	input_handler->mouse = mouse;

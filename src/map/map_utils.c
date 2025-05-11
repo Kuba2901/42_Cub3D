@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:00:29 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 21:00:42 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:16:25 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	map_dda_is_hit(t_cube *cube, t_point pt)
 t_bool	map_is_within_bounds(int x, int y, t_map map)
 {
 	if (y < 0 || y >= map.height)
-		return (FALSE);
+		return (CUBE_FALSE);
 	if (x < 0 || x >= map.width)
-		return (FALSE);
+		return (CUBE_FALSE);
 	if (map.tiles[y][x].c == 'O')
-		return (FALSE);
-	return (TRUE);
+		return (CUBE_FALSE);
+	return (CUBE_TRUE);
 }
 
 t_bool	map_is_door_open(t_cube *cube)

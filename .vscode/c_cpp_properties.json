@@ -5,6 +5,7 @@
 			"${workspaceFolder}/lib/libft",
             "${workspaceFolder}/lib/mlx_mac",
             "${workspaceFolder}/lib/mlx_linux",
+            "${workspaceFolder}/lib/miniaudio",
 			"${workspaceFolder}/includes",
             "${workspaceFolder}/includes/cube/utils",
             "${workspaceFolder}/includes/cube/mock",
@@ -18,6 +19,7 @@
             "${workspaceFolder}/includes/cube/runtime_handler",
             "${workspaceFolder}/includes/cube/lifecycle",
             "${workspaceFolder}/includes/cube/animations",
+            "${workspaceFolder}/includes/cube/audio",
 			"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/Tk.framework/Versions/8.5/Headers"
 		],
         "myDefines": [

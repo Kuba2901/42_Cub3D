@@ -46,12 +46,11 @@ char *map[] = {
 
 const char *paths[] = {
 	"NO ./assets/textures/biohazard/xpm/environment/wall_north.xpm",
-	"SO ./assets/textures/biohazard/xpm/environment/wall_south.xpm",
 	"EA ./assets/textures/biohazard/xpm/environment/wall_east.xpm",
+	"SO ./assets/textures/biohazard/xpm/environment/wall_south.xpm",
 	"WE ./assets/textures/biohazard/xpm/environment/wall_west.xpm",
 	"FL ./assets/textures/biohazard/xpm/environment/floor.xpm",
 	"CE ./assets/textures/biohazard/xpm/environment/ceiling.xpm",
-	"XX ./assets/textures/biohazard/xpm/enemies/enemy_0.xpm",
 };
 
 int	main( void )

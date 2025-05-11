@@ -5,14 +5,14 @@ t_cube_settings	*settings_cube_init(t_map_config *map_config, t_tex_config *tex_
 	t_cube_settings	*cube_settings;
 	t_bool			valid;
 
-	valid = TRUE;
+	valid = CUBE_TRUE;
 	cube_settings = malloc(sizeof(t_cube_settings));
 	if (!cube_settings)
 		return (NULL);
 	cube_settings->map_config = map_config;
 	cube_settings->tex_config = tex_config;
 	if (!map_config || !tex_config)
-		valid = FALSE;
+		valid = CUBE_FALSE;
 	cube_settings->valid = valid;
 	return (cube_settings);
 }

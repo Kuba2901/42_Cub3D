@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube_input_handler.h                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/11 21:11:57 by jnenczak          #+#    #+#             */
+/*   Updated: 2025/05/11 21:11:59 by jnenczak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE_INPUT_HANDLER_H
 # define CUBE_INPUT_HANDLER_H
 
@@ -12,15 +24,13 @@
 
 typedef struct s_input_handler_keys
 {
-    int	w;
-    int	a;
-    int	s;
-    int	d;
-    int	left;
-    int	right;
-    int	escape;
-
-	// Action Keys
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	left;
+	int	right;
+	int	escape;
 	int	e;
 }	t_input_handler_keys;
 
@@ -36,7 +46,6 @@ typedef struct s_input_handler
 {
 	t_input_handler_keys	*keys;
 	t_mouse					mouse;
-
 }	t_input_handler;
 
 typedef struct s_cube	t_cube;

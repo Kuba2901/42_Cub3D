@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 19:58:18 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:14:02 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:16:54 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ t_enemy	*entities_enemy_init(t_point pt, t_animated_frames *frames_ptr)
 		safe_free(enemy);
 		return (NULL);
 	}
-	enemy->base->controller->playing = TRUE;
-	enemy->base->controller->repeat = TRUE;
+	enemy->base->controller->playing = CUBE_TRUE;
+	enemy->base->controller->repeat = CUBE_TRUE;
 	return (enemy);
 }
 
