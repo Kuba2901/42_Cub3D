@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 15:55:30 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:05:43 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:54:29 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ void	audio_handle_elevator(t_cube *cube, t_bool is_opening);
 
 // Update audio system in game loop
 void	audio_integration_update(t_cube *cube);
+
+void	audio_integration_handle_exit(t_cube *cube);
 
 #endif

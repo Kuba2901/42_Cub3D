@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 15:22:30 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:14:03 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:02:38 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <utils.h>
 # include "miniaudio.h"
+
+# define AUDIO_MUSIC_VOL 0.1f
+# define AUDIO_SFX_VOL 0.3f
 
 typedef enum e_sound_type
 {

@@ -30,14 +30,10 @@ typedef enum	s_tex_type
 	TEX_TYPE_WEST,
 	TEX_TYPE_FLOOR,
 	TEX_TYPE_CEILING,
-	TEX_TYPE_ENEMY,
-	TEX_TYPE_SPAWN,
 	TEX_TYPE_EXIT,
-	TEX_TYPE_KEYCARD
 }	t_tex_type;
 
-# define TEXTURE_TYPES_COUNT 7
-
+# define TEXTURE_TYPES_COUNT 6
 
 typedef struct s_animated_frames t_animated_frames;
 

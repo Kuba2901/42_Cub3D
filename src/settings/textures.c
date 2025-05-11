@@ -114,18 +114,12 @@ t_tex_type	settings_tex_get_tex_type(const char *path)
 		return (TEX_TYPE_WEST);
 	if (!ft_strncmp(path, "EA", 2))
 		return (TEX_TYPE_EAST);
-	if (!ft_strncmp(path, "XX", 2))
-		return (TEX_TYPE_ENEMY);
 	if (!ft_strncmp(path, "FL", 2))
 		return (TEX_TYPE_FLOOR);
 	if (!ft_strncmp(path, "CE", 2))
 		return (TEX_TYPE_CEILING);
 	if (!ft_strncmp(path, "EX", 2))
 		return (TEX_TYPE_EXIT);
-	if (!ft_strncmp(path, "ST", 2))
-		return (TEX_TYPE_SPAWN);
-	if (!ft_strncmp(path, "KE", 2))
-		return (TEX_TYPE_KEYCARD);
 	return (TEX_TYPE_NORTH);
 }
 

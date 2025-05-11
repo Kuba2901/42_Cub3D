@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 22:36:11 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:51:53 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,21 +43,38 @@ static double	draw_prep_get_wall_x(t_cube *cube)
 
 static t_tex_type	draw_prep_determine_face_hit(t_dda_data *dda)
 {
-	if (dda->hit_type == HORIZONTAL)
-	{
+	if (dda->hit_type == HORIZONTAL) {
 		if (dda->step_x > 0)
-			return (TEX_TYPE_SOUTH);
+			return TEX_TYPE_WEST;
 		else
-			return (TEX_TYPE_NORTH);
-	}
+			return TEX_TYPE_EAST;
+	} 
 	else
 	{
 		if (dda->step_y > 0)
-			return (TEX_TYPE_WEST);
+			return TEX_TYPE_NORTH;
 		else
-			return (TEX_TYPE_EAST);
+			return TEX_TYPE_SOUTH;
 	}
 }
+
+// static t_tex_type	draw_prep_determine_face_hit(t_dda_data *dda)
+// {
+// 	if (dda->hit_type == HORIZONTAL)
+// 	{
+// 		if (dda->step_x > 0)
+// 			return (TEX_TYPE_SOUTH);
+// 		else
+// 			return (TEX_TYPE_NORTH);
+// 	}
+// 	else
+// 	{
+// 		if (dda->step_y > 0)
+// 			return (TEX_TYPE_WEST);
+// 		else
+// 			return (TEX_TYPE_EAST);
+// 	}
+// }
 
 t_draw_vertical_slice_data	draw_prep_vertical_slice_data(
 	t_cube *cube, int column_x)

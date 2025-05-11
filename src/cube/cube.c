@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:36:12 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 17:44:58 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include <cube_audio.h>
 #include <stdio.h>
 #include <cube_drawing.h>
+#include <cube_audio_integration.h>
 
 // Function to load all game sounds
 static t_bool	load_game_sounds(t_audio_system *audio_system)
@@ -72,6 +73,8 @@ t_cube	*cube_cube_init(char **map, int width, int height,
 	printf("7... Initialized input_handler\n");
 	cube->dda_data = dda_init();
 	printf("8... Initialized DDA data\n");
+	// cube->audio_system = NULL;
+	// (void)load_game_sounds;
 	cube->audio_system = audio_system_init();
 	printf("9... Initialized audio system\n");
 	if (cube->audio_system)
@@ -79,7 +82,7 @@ t_cube	*cube_cube_init(char **map, int width, int height,
 		if (load_game_sounds(cube->audio_system))
 		{
 			// Start background music
-			audio_play_music(cube->audio_system, SOUND_MUSIC_BACKGROUND, 0.8f);
+			audio_play_music(cube->audio_system, SOUND_MUSIC_BACKGROUND, AUDIO_MUSIC_VOL);
 			printf("10... Started background music\n");
 		}
 	}
@@ -90,8 +93,7 @@ void	cube_cube_free(t_cube *cube)
 {
 	if (cube->runtime_handler->display_credits)
 	{
-		if (cube->audio_system && !is_sound_playing(cube->audio_system, SOUND_MUSIC_CREDITS))
-			audio_play_music(cube->audio_system, SOUND_MUSIC_CREDITS, 0.8f);
+		audio_integration_handle_exit(cube);
 		credits_display(cube);
 	}
 	cube->runtime_handler->running = CUBE_FALSE;
