@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 19:38:24 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:13:05 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,26 @@
 #include <cube_drawing.h>
 #include <cube_audio_integration.h>
 
-t_cube	*cube_cube_init(char **map, int width, int height,
-	const char **tex_paths)
+t_cube	*cube_cube_init(int argc, char **argv)
 {
 	t_cube	*cube;
+
+	printf("0... Checking program arguments\n");
+	check_args(argc, argv);
 
 	cube = malloc(sizeof(t_cube));
 	if (!cube)
 		return (NULL);
 	cube->mlx_handler = mlx_mlx_handler_init();
-	cube->cube_settings = settings_cube_init(
-			settings_map_config_init(map, width, height),
-			settings_tex_config_init(tex_paths, cube->mlx_handler));
-	cube->entities = entities_entities_init(
-			entities_entities_config_init(cube->cube_settings));
+	printf("2... Initialized mlx_handler\n");
+
+	cube->cube_settings = settings_cube_init(settings_map_config_init(),
+		settings_tex_config_init(tex_paths, cube->mlx_handler));
+	printf("3... Initialized cube_settings\n");
+
+	cube->entities = entities_entities_init(entities_entities_config_init(cube->cube_settings));
+	printf("4... Initialized entities\n");
+
 	cube->map = map_map_init(cube->cube_settings->map_config);
 	cube->runtime_handler = runtime_runtime_handler_init();
 	cube->input_handler = input_handler_init();
