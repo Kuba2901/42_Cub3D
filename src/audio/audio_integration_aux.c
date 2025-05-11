@@ -1,45 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   audio.c                                            :+:      :+:    :+:   */
+/*   audio_integration_aux.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 15:22:30 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 21:09:10 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:23:02 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#
 #include <cube_audio.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <libft.h>
+#include <cube.h>
 
-void	audio_system_shutdown(t_audio_system *audio_system)
+void	audio_integration_handle_exit(t_cube *cube)
 {
 	int	i;
 
-	if (!audio_system)
+	if (!cube->audio_system)
 		return ;
-	audio_stop_music(audio_system);
 	i = -1;
-	while (++i < SOUND_COUNT)
+	audio_stop_music(cube->audio_system);
+	while (++i < SOUND_COUNT - 1)
 	{
-		if (audio_system->sound_loaded[i])
-		{
-			ma_sound_stop(&audio_system->sounds[i]);
-			ma_sound_uninit(&audio_system->sounds[i]);
-			if (audio_system->decoders[i])
-			{
-				ma_decoder_uninit(audio_system->decoders[i]);
-				free(audio_system->decoders[i]);
-				audio_system->decoders[i] = NULL;
-			}
-		}
+		if (i == SOUND_MUSIC_CREDITS)
+			continue ;
+		audio_stop_sound(cube->audio_system, i);
 	}
-	ma_sound_group_uninit(&audio_system->music_group);
-	ma_engine_uninit(&audio_system->engine);
-	free(audio_system);
+	audio_play_music(cube->audio_system, SOUND_MUSIC_CREDITS,
+		AUDIO_MUSIC_VOL);
+}
+
+void	audio_integration_update(t_cube *cube)
+{
+	if (!cube->audio_system)
+		return ;
+	audio_update_player_movement(cube);
+	audio_handle_elevator(cube, audio_elevator_in_motion(cube));
 }

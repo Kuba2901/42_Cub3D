@@ -1,33 +1,43 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube_map.h                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/11 21:22:22 by jnenczak          #+#    #+#             */
+/*   Updated: 2025/05/11 21:22:49 by jnenczak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE_MAP_H
 # define CUBE_MAP_H
 
-typedef struct	s_vector
+# include <utils.h>
+
+typedef struct s_vector
 {
 	double	dir_x;
 	double	dir_y;
 }	t_vector;
 
-typedef struct	s_point
+typedef struct s_point
 {
 	int		x;
 	int		y;
 	char	c;
 }	t_point;
 
-// Force the map to a rectangular shape
-typedef struct	s_map
+typedef struct s_map
 {
 	t_point	**tiles;
 	int		height;
 	int		width;
 }	t_map;
 
-typedef struct	s_map	t_map;
-typedef struct	s_cube	t_cube;
-
+typedef struct s_map		t_map;
+typedef struct s_cube		t_cube;
 typedef struct s_map_config	t_map_config;
-
-# include <utils.h>
 
 t_point	map_point_init(int x, int y, char c);
 t_point	*map_point_init_heap(int x, int y, char c);

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 17:44:58 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 19:38:24 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,6 @@
 #include <cube_drawing.h>
 #include <cube_audio_integration.h>
 
-// Function to load all game sounds
-static t_bool	load_game_sounds(t_audio_system *audio_system)
-{
-	t_bool success;
-
-	success = CUBE_TRUE;
-	
-	// Load all game sounds
-	success &= audio_load_sound(audio_system, SOUND_FOOTSTEPS, 
-				"./assets/sounds/footsteps.wav");
-	success &= audio_load_sound(audio_system, SOUND_ELEVATOR_OPEN, 
-				"./assets/sounds/elevator_door.wav");
-	success &= audio_load_sound(audio_system, SOUND_ELEVATOR_CLOSE, 
-				"./assets/sounds/elevator_door.wav");
-	success &= audio_load_sound(audio_system, SOUND_COLLECTIBLE, 
-				"./assets/sounds/collectible.wav");
-	success &= audio_load_sound(audio_system, SOUND_MUSIC_BACKGROUND, 
-				"./assets/sounds/background_music.mp3");
-	success &= audio_load_sound(audio_system, SOUND_MUSIC_CREDITS, 
-				"./assets/sounds/credits_music.mp3");
-	if (!success)
-		printf("Warning: Some sounds failed to load\n");
-	return (success);
-}
-
 t_cube	*cube_cube_init(char **map, int width, int height,
 	const char **tex_paths)
 {
@@ -55,37 +30,17 @@ t_cube	*cube_cube_init(char **map, int width, int height,
 	cube = malloc(sizeof(t_cube));
 	if (!cube)
 		return (NULL);
-	printf("1... Allocated memory for cube\n");
 	cube->mlx_handler = mlx_mlx_handler_init();
-	printf("2... Initialized mlx_handler\n");
 	cube->cube_settings = settings_cube_init(
 			settings_map_config_init(map, width, height),
 			settings_tex_config_init(tex_paths, cube->mlx_handler));
-	printf("3... Initialized cube_settings\n");
 	cube->entities = entities_entities_init(
 			entities_entities_config_init(cube->cube_settings));
-	printf("4... Initialized entities\n");
 	cube->map = map_map_init(cube->cube_settings->map_config);
-	printf("5... Initialized map\n");
 	cube->runtime_handler = runtime_runtime_handler_init();
-	printf("6... Initialized runtime_handler\n");
 	cube->input_handler = input_handler_init();
-	printf("7... Initialized input_handler\n");
 	cube->dda_data = dda_init();
-	printf("8... Initialized DDA data\n");
-	// cube->audio_system = NULL;
-	// (void)load_game_sounds;
 	cube->audio_system = audio_system_init();
-	printf("9... Initialized audio system\n");
-	if (cube->audio_system)
-	{
-		if (load_game_sounds(cube->audio_system))
-		{
-			// Start background music
-			audio_play_music(cube->audio_system, SOUND_MUSIC_BACKGROUND, AUDIO_MUSIC_VOL);
-			printf("10... Started background music\n");
-		}
-	}
 	return (cube);
 }
 

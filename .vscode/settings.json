@@ -46,6 +46,7 @@
 		"fstream": "c",
 		"locale": "c",
 		"cube_sprites.h": "c",
-		"miniaudio.h": "c"
+		"miniaudio.h": "c",
+		"cube_audio.h": "c"
 	}
 }
