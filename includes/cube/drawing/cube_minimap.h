@@ -1,21 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube_minimap.h                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/11 21:13:32 by jnenczak          #+#    #+#             */
+/*   Updated: 2025/05/11 21:15:00 by jnenczak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE_MINIMAP_H
 # define CUBE_MINIMAP_H
 
-// Minimap constants
-#define MINIMAP_SIZE 200              // Size of the minimap in pixels
-#define MINIMAP_CELL_SIZE 8           // Size of each cell in the minimap
-#define MINIMAP_PLAYER_SIZE 4         // Size of the player dot
-#define MINIMAP_MARGIN 10             // Margin from screen edge
-#define MINIMAP_BACKGROUND_COLOR 0x222222   // Background color
-#define MINIMAP_WALL_COLOR 0x888888        // Wall color
-#define MINIMAP_PLAYER_COLOR 0xFF0000      // Player color
-#define MINIMAP_FLOOR_COLOR 0x333333       // Floor color
-#define MINIMAP_BORDER_COLOR 0xAAAAAA      // Border color
+# define MINIMAP_SIZE 200              
+# define MINIMAP_CELL_SIZE 8           
+# define MINIMAP_PLAYER_SIZE 4         
+# define MINIMAP_ENEMY_SIZE 3
+# define MINIMAP_MARGIN 10             
+# define MINIMAP_BACKGROUND_COLOR 0x222222
+# define MINIMAP_WALL_COLOR 0x888888
+# define MM_PLAYER_COLOR 0xFF0000
+# define MINIMAP_FLOOR_COLOR 0x333333
+# define MINIMAP_BORDER_COLOR 0xAAAAAA
 
-typedef struct	s_cube	t_cube;
-typedef struct	s_player	t_player;
+typedef struct s_cube	t_cube;
+typedef struct s_player	t_player;
 
-typedef struct	s_bresenham_data
+typedef struct s_bresenham_data
 {
 	int				dir_length;
 	int				dir_end_x;
@@ -29,18 +41,18 @@ typedef struct	s_bresenham_data
 	int				y;
 }	t_bresenham_data;
 
-typedef struct	s_minimap_data
+typedef struct s_minimap_data
 {
 	int					map_x;
 	int					map_y;
 	int					screen_x;
 	int					screen_y;
-    int 				minimap_pos_x;
-    int 				minimap_pos_y;
-    int 				player_pos_x;
+	int					minimap_pos_x;
+	int					minimap_pos_y;
+	int					player_pos_x;
 	int					player_pos_y;
-    t_player			*player;
-    t_image_data		*img;
+	t_player			*player;
+	t_image_data		*img;
 	int					map_center_x;
 	int					map_center_y;
 	int					map_radius;
@@ -49,5 +61,10 @@ typedef struct	s_minimap_data
 }	t_minimap_data;
 
 void	draw_minimap(t_cube *cube);
+void	minimap_draw_cells(t_minimap_data *mmd);
+void	minimap_bresenham_data_init(t_minimap_data *mmd);
+void	minimap_draw_direction_line(t_minimap_data *mmd);
+void	minimap_draw_player(t_minimap_data *mmd);
+void	minimap_draw_enemies(t_minimap_data *mmd);
 
 #endif

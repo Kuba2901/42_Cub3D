@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cube_mlx_handler.h                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/11 21:23:13 by jnenczak          #+#    #+#             */
+/*   Updated: 2025/05/11 21:24:14 by jnenczak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUBE_MLX_HANDLER_H
 # define CUBE_MLX_HANDLER_H
 
@@ -5,12 +17,12 @@
 # define WINDOW_HEIGHT 720
 # define WINDOW_TITLE "Kuba3D"
 
-# define WINDOW_CENTER_X (WINDOW_WIDTH / 2)
-# define WINDOW_CENTER_Y (WINDOW_HEIGHT /  2)
-
+/* NORMINETTE ENFORCED BEHAVIOUR -> SHOULD BE WINDOW_WIDTH/HEIGHT  /  2 */
+# define WINDOW_CENTER_X 640
+# define WINDOW_CENTER_Y 360
 # define FOV .66
 
-typedef struct	s_image_data
+typedef struct s_image_data
 {
 	void	*img;
 	char	*addr;
@@ -19,7 +31,7 @@ typedef struct	s_image_data
 	int		endian;
 }	t_image_data;
 
-typedef struct	s_mlx_handler
+typedef struct s_mlx_handler
 {
 	void			*mlx;
 	void			*mlx_win;
