@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 22:27:25 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:18:08 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #include <sys/time.h>
 #include <stdlib.h>
 #include <mlx.h>
+#include <cube_audio_integration.h>
 
 int	lifecycle_on_destroy(t_cube *cube)
 {
@@ -44,7 +45,7 @@ static int	lifecycle_check_exit_condition(t_cube *cube)
 	if ((int)player_loc.x == (int)exit_loc.x
 		&& (int)player_loc.y == (int)exit_loc.y)
 	{
-		cube->runtime_handler->display_credits = TRUE;
+		cube->runtime_handler->display_credits = CUBE_TRUE;
 		cube_cube_free(cube);
 		return (1);
 	}
@@ -63,6 +64,7 @@ int	lifecycle_game_loop(t_cube *cube)
 	cube->runtime_handler->old_time = cube->runtime_handler->time;
 	cube->runtime_handler->time = lifecycle_get_ticks();
 	lifecycle_animate_sprites(cube);
+	audio_integration_update(cube);
 	draw_render_scene(cube);
 	mov_handler(cube);
 	return (0);

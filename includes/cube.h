@@ -8,6 +8,7 @@ typedef struct	s_mlx_handler	t_mlx_handler;
 typedef struct	s_runtime_handler	t_runtime_handler;
 typedef struct	s_input_handler	t_input_handler;
 typedef struct	s_dda_data	t_dda_data;
+typedef struct	s_audio_system	t_audio_system;
 
 typedef struct	s_cube
 {
@@ -18,6 +19,9 @@ typedef struct	s_cube
 	t_runtime_handler	*runtime_handler;
 	t_input_handler		*input_handler;
 	t_dda_data			*dda_data;
+
+	// Audio Playback TODO: Initialize
+	t_audio_system		*audio_system;
 }	t_cube;
 
 t_cube	*cube_cube_init(char **map, int width, int height, const char **tex_paths);

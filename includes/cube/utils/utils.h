@@ -3,8 +3,8 @@
 
 typedef enum s_bool
 {
-	FALSE,
-	TRUE
+	CUBE_FALSE,
+	CUBE_TRUE
 }	t_bool;
 
 void	safe_free(void *param);

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:38:57 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:52:30 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:17:41 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_bool	is_walkable(t_cube *cube, t_point pt)
 	if (pt.x == (int)cube->entities->exit->base->current_location.x
 		&& pt.y == (int)cube->entities->exit->base->current_location.y
 		&& cube->entities->exit->unlocked)
-		return (TRUE);
+		return (CUBE_TRUE);
 	return (map_is_walkable(pt));
 }
 
@@ -46,10 +46,10 @@ void	input_handler_action(t_cube *cube)
 		if (current->type == ANIM_TYPE_OPEN
 			&& frame == current->frames_ptr->frames_count - 1)
 			anim_animation_controller_player_start(
-				exit->base->controller, ANIM_TYPE_OPEN, TRUE);
+				exit->base->controller, ANIM_TYPE_OPEN, CUBE_TRUE);
 		else
 			anim_animation_controller_player_start(
-				exit->base->controller, ANIM_TYPE_OPEN, FALSE);
+				exit->base->controller, ANIM_TYPE_OPEN, CUBE_FALSE);
 	}
 }
 
@@ -72,7 +72,7 @@ void	mov_handler(t_cube *cube)
 	if (keys->left || keys->right)
 		handle_rotation(cube, r_speed);
 	if (keys->escape)
-		cube->runtime_handler->running = FALSE;
+		cube->runtime_handler->running = CUBE_FALSE;
 	if (keys->e)
 		input_handler_action(cube);
 }

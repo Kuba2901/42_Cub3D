@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:48:59 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/09 20:49:00 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:16:36 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ t_animation_controller	*anim_animation_controller_init( void )
 	animation_controller->reload = NULL;
 	animation_controller->take_damage = NULL;
 	animation_controller->current = NULL;
-	animation_controller->playing = FALSE;
-	animation_controller->repeat = FALSE;
-	animation_controller->reverse = FALSE;
+	animation_controller->playing = CUBE_FALSE;
+	animation_controller->repeat = CUBE_FALSE;
+	animation_controller->reverse = CUBE_FALSE;
 	return (animation_controller);
 }
 
@@ -98,7 +98,7 @@ void	anim_animation_controller_player_start(
 		controller->current = controller->take_damage;
 	if (!controller->current)
 		return ;
-	controller->playing = TRUE;
+	controller->playing = CUBE_TRUE;
 	controller->reverse = reverse;
 }
 
@@ -108,6 +108,6 @@ void	anim_animation_controller_player_stop(
 {
 	if (!controller)
 		return ;
-	controller->playing = FALSE;
+	controller->playing = CUBE_FALSE;
 	controller->current = controller->idle;
 }

@@ -1,7 +1,7 @@
 NAME := Cube
 CFLAGS := -Wextra -Wall -Werror -g # -O0
 LIBLIBFT := ./lib/libft
-HEADERS := -I ./includes/ -I $(LIBLIBFT) -I ./includes/cube/mock/ -I ./includes/cube/parsing/ -I ./includes/cube/utils/ -I ./includes/cube/controls/ -I ./includes/cube/entities/ -I ./includes/cube/map/ -I ./includes/cube/mlx_handler/ -I ./includes/cube/runtime_handler/ -I ./includes/cube/runtime_handler/ -I ./includes/cube/settings/ -I ./includes/cube/dda/ -I ./includes/cube/drawing/ -I ./includes/cube/lifecycle/  -I ./includes/cube/animations/
+HEADERS := -I ./includes/ -I $(LIBLIBFT) -I ./includes/cube/mock/ -I ./includes/cube/parsing/ -I ./includes/cube/utils/ -I ./includes/cube/controls/ -I ./includes/cube/entities/ -I ./includes/cube/map/ -I ./includes/cube/mlx_handler/ -I ./includes/cube/runtime_handler/ -I ./includes/cube/runtime_handler/ -I ./includes/cube/settings/ -I ./includes/cube/dda/ -I ./includes/cube/drawing/ -I ./includes/cube/lifecycle/  -I ./includes/cube/animations/ -I ./includes/cube/audio/
 
 # OS detection
 UNAME_S := $(shell uname -s)
@@ -9,13 +9,16 @@ UNAME_S := $(shell uname -s)
 # Linux configuration
 ifeq ($(UNAME_S),Linux)
     LIBMLX := ./lib/mlx_linux
-    LIBS := $(LIBMLX)/libmlx.a -lXext -lX11 -lm $(LIBLIBFT)/libft.a
-    HEADERS += -I $(LIBMLX) -I /usr/include/X11
+	LIBMINIAUDIO := ./lib/miniaudio
+	MINIAUDIO_LINKED_LIBRARIES := -lm -lpthread -ldl
+    LIBS := $(LIBMLX)/libmlx.a -lXext -lX11 -lm $(LIBLIBFT)/libft.a $(MINIAUDIO_LINKED_LIBRARIES)
+    HEADERS += -I $(LIBMLX) -I /usr/include/X11 -I $(LIBMINIAUDIO)
 endif
 
 # macOS configuration
 ifeq ($(UNAME_S),Darwin)
     LIBMLX := ./lib/mlx_mac
+	LIBMINIAUDIO := ./lib/miniaudio
     # Check for Apple Silicon
     UNAME_M := $(shell uname -m)
     ifeq ($(UNAME_M),arm64)
@@ -25,8 +28,9 @@ ifeq ($(UNAME_S),Darwin)
         # Intel Mac
         GLFW_LIB = -L"/usr/local/Cellar/glfw/3.4/lib/"
     endif
-    LIBS := $(LIBMLX)/libmlx.a -framework Cocoa -framework OpenGL -framework IOKit -ldl -lglfw -pthread -lm $(GLFW_LIB) $(LIBLIBFT)/libft.a
-    HEADERS += -I $(LIBMLX) -I /usr/X11/include
+	MINIAUDIO_LINKED_LIBRARIES := -framework AudioToolbox -framework CoreFoundation
+    LIBS := $(LIBMLX)/libmlx.a -framework Cocoa -framework OpenGL -framework IOKit -ldl -lglfw -pthread -lm $(GLFW_LIB) $(LIBLIBFT)/libft.a $(MINIAUDIO_LINKED_LIBRARIES)
+    HEADERS += -I $(LIBMLX) -I /usr/X11/include -I $(LIBMINIAUDIO)
     X11_FLAGS = -L/usr/X11/lib -lXext -lX11
 endif
 
@@ -74,6 +78,13 @@ configure:
 		cp -r ./lib/mlx_linux ./lib/mlx_mac; \
 	else \
 		echo "MLX macOS directory already exists. Skipping copy."; \
+	fi
+	@echo "Installing Miniaudio..."
+	@if [ ! -d "./lib/miniaudio" ]; then \
+		echo "Cloning Miniaudio repository..."; \
+		git clone git@github.com:mackron/miniaudio.git ./lib/miniaudio; \
+	else \
+		echo "Miniaudio repository already exists. Skipping clone."; \
 	fi
 	@echo "Configuring MLX..."
 	@cd $(LIBMLX) && ./configure

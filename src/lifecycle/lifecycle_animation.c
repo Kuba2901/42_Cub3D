@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 21:54:38 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:18:04 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static void	lifecycle_animate_enemy(t_enemy *enemy)
 		if (frame >= controller->current->frames_ptr->frames_count - 1
 			&& !controller->repeat)
 		{
-			controller->playing = FALSE;
+			controller->playing = CUBE_FALSE;
 			controller->current = controller->idle;
 			controller->current->frame = 0;
 		}
@@ -61,14 +61,14 @@ static void	lifecycle_animate_exit_aux(t_cube *cube)
 	controller = cube->entities->exit->base->controller;
 	if (controller->current->frame == 0)
 	{
-		cube->entities->exit->unlocked = FALSE;
-		controller->playing = FALSE;
+		cube->entities->exit->unlocked = CUBE_FALSE;
+		controller->playing = CUBE_FALSE;
 	}
 	else if (controller->current->frame
 		== controller->current->frames_ptr->frames_count - 1)
 	{
-		cube->entities->exit->unlocked = TRUE;
-		controller->playing = FALSE;
+		cube->entities->exit->unlocked = CUBE_TRUE;
+		controller->playing = CUBE_FALSE;
 	}
 }
 

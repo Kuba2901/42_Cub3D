@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 18:43:20 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 19:44:42 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 16:17:23 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	minimap_draw_direction_line(t_minimap_data *mmd)
 {
 	int	e2;
 
-	while (TRUE)
+	while (CUBE_TRUE)
 	{
 		if (mmd->bd.x >= mmd->minimap_pos_x
 			&& mmd->bd.x < mmd->minimap_pos_x + MINIMAP_SIZE
