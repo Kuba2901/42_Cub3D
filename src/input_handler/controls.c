@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:38:57 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:17:41 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:41:46 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,20 @@ t_bool	is_walkable(t_cube *cube, t_point pt)
 	return (map_is_walkable(pt));
 }
 
+static t_bool	is_exit_close(t_cube *cube)
+{
+	int	px;
+	int	py;
+	int	ex;
+	int	ey;
+
+	px = cube->entities->player->base->current_location.x;
+	py = cube->entities->player->base->current_location.y;
+	ex = cube->entities->exit->base->current_location.x;
+	ey = cube->entities->exit->base->current_location.y;
+	return (abs(px - ex) <= 1 && abs(py - ey) <= 1);
+}
+
 void	input_handler_action(t_cube *cube)
 {
 	t_input_handler_keys	*keys;
@@ -41,7 +55,7 @@ void	input_handler_action(t_cube *cube)
 	exit = cube->entities->exit;
 	current = exit->base->controller->current;
 	frame = current->frame;
-	if (keys->e)
+	if (is_exit_close(cube) && keys->e)
 	{
 		if (current->type == ANIM_TYPE_OPEN
 			&& frame == current->frames_ptr->frames_count - 1)

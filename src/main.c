@@ -8,6 +8,7 @@
 #include <cube_mlx_handler.h>
 #include <cube_lifecycle.h>
 #include <cube_input_handler.h>
+#include <cube_drawing.h>
 #include <mlx.h>
 
 // char *map[] = {

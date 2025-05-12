@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:01:51 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 21:02:58 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:18:59 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,11 @@ t_image_data	*mlx_img_image_data_init(t_mlx_handler *mlx_handler)
 {
 	t_image_data	*image_data;
 
+	(void)mlx_handler;
 	image_data = malloc(sizeof(t_image_data));
 	if (!image_data)
 		return (NULL);
-	image_data->img = mlx_new_image(mlx_handler->mlx,
-			WINDOW_WIDTH, WINDOW_HEIGHT);
-	image_data->addr = mlx_get_data_addr(image_data->img,
-			&image_data->bits_per_pixel,
-			&image_data->line_length,
-			&image_data->endian);
+	image_data->img = NULL;
 	return (image_data);
 }
 

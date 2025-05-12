@@ -5,7 +5,7 @@
 		"name": "Debug C with LLDB + Make",
 		"type": "cppdbg",
 		"request": "launch",
-		"program": "${workspaceFolder}/Cube",
+		"program": "${workspaceFolder}/CUB3D",
 		"args": [],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",

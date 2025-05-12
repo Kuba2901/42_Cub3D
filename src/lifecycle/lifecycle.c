@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:18:08 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:13:43 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,12 @@ int	lifecycle_game_loop(t_cube *cube)
 		return (0);
 	cube->runtime_handler->old_time = cube->runtime_handler->time;
 	cube->runtime_handler->time = lifecycle_get_ticks();
+	if (cube->runtime_handler->displaying_intro)
+	{
+		if (cube->mlx_handler->mlx_img->img == NULL)
+			intro_display(cube);
+		return (0);
+	}
 	lifecycle_animate_sprites(cube);
 	audio_integration_update(cube);
 	draw_render_scene(cube);
