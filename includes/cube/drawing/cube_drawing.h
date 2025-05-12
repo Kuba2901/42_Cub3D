@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:15:05 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 21:16:52 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:02:30 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,8 @@ char						**credits_lines_load(void);;
 void						draw_textured(t_draw_vertical_slice_data *data,
 								t_cube *cube, int y);
 void						draw_render_floor_and_ceiling(t_cube *cube);
+
+// Intro
+void						intro_display(t_cube *cube);
 
 #endif
