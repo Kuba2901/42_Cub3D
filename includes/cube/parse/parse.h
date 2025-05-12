@@ -39,7 +39,7 @@ typedef struct s_parser_config
 void			init_parser_map_config(t_parser_config *parser_config, char *filename);
 void			init_parser_textures_paths(t_parser_config *parser_config);
 t_parser_config	*init_parser_config(char *filename);
-void	free_parser_map_config(t_map_parse *map_config);
+void			free_parser_map_config(t_map_parse *map_config);
 void			free_parser_config(t_parser_config *parser_config, char *error);
 
 // parse.c

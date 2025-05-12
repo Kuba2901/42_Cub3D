@@ -47,6 +47,8 @@
 		"locale": "c",
 		"cube_sprites.h": "c",
 		"miniaudio.h": "c",
-		"cube_audio.h": "c"
+		"cube_audio.h": "c",
+		"string.h": "c",
+		"cube_settings_args.h": "c"
 	}
 }

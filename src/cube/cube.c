@@ -27,8 +27,7 @@
 
 t_cube	*cube_cube_init(int argc, char **argv)
 {
-	t_cube	*cube;
-	//check with kuba if we want include the parser struct within cube struct
+	t_cube			*cube;
 	t_parser_config	*parser_config;
 
 	printf("0... Checking program arguments\n");
@@ -51,7 +50,6 @@ t_cube	*cube_cube_init(int argc, char **argv)
 		printf("%s\n", parser_config->map_config->map[i]);
 	}
 
-
 	cube = malloc(sizeof(t_cube));
 	if (!cube)
 		return (NULL);
@@ -60,18 +58,18 @@ t_cube	*cube_cube_init(int argc, char **argv)
 
 	cube->cube_settings = settings_cube_init(settings_map_config_init(parser_config->map_config->map,
 			parser_config->map_config->width, parser_config->map_config->height),
-		// settings_tex_config_init(parser_config->textures_config, cube->mlx_handler)); // texture needs to be an array
-		settings_tex_config_init(parser_config->textures_paths, cube->mlx_handler));
+	settings_tex_config_init(parser_config->textures_paths, cube->mlx_handler));
 	printf("3... Initialized cube_settings\n");
-
+	
 	cube->entities = entities_entities_init(entities_entities_config_init(cube->cube_settings));
 	printf("4... Initialized entities\n");
-
+	
 	cube->map = map_map_init(cube->cube_settings->map_config);
 	cube->runtime_handler = runtime_runtime_handler_init();
 	cube->input_handler = input_handler_init();
 	cube->dda_data = dda_init();
 	cube->audio_system = audio_system_init();
+	free_parser_config(parser_config, NULL);
 	return (cube);
 }
 
@@ -92,7 +90,6 @@ void	cube_cube_free(t_cube *cube)
 	mlx_mlx_handler_free(cube->mlx_handler);
 	runtime_runtime_handler_free(cube->runtime_handler);
 	dda_free(cube->dda_data);
-	free_parser_config(cube->parser_config, NULL);
 	safe_free(cube);
 	exit(EXIT_SUCCESS);
 }

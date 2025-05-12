@@ -20,7 +20,7 @@ typedef struct s_mlx_handler		t_mlx_handler;
 typedef struct s_runtime_handler	t_runtime_handler;
 typedef struct s_input_handler		t_input_handler;
 typedef struct s_dda_data			t_dda_data;
-typedef struct	s_parser_config	t_parser_config;
+typedef struct	s_parser_config		t_parser_config;
 typedef struct s_audio_system		t_audio_system;
 
 # define CUBE_SECOND_IN_US 1000000
@@ -35,7 +35,6 @@ typedef struct s_cube
 	t_input_handler		*input_handler;
 	t_dda_data			*dda_data;
 	t_audio_system		*audio_system;
-	t_parser_config		*parser_config;
 }	t_cube;
 
 t_cube	*cube_cube_init(int argc, char **argv);

@@ -81,5 +81,6 @@ void	credits_display(t_cube *cube)
 		mlx_do_sync(cube->mlx_handler->mlx);
 		usleep(30000);
 	}
+	cube->runtime_handler->displaying_credits = CUBE_FALSE;
 	credits_lines_free(lines);
 }
