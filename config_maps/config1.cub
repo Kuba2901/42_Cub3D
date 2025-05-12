@@ -4,7 +4,6 @@ EA ./assets/textures/biohazard/xpm/environment/wall_east.xpm
 WE ./assets/textures/biohazard/xpm/environment/wall_west.xpm
 FL ./assets/textures/biohazard/xpm/environment/floor.xpm
 CE ./assets/textures/biohazard/xpm/environment/ceiling.xpm
-XX ./assets/textures/biohazard/xpm/enemies/enemy_0.xpm
 
 111111111111111111111111
 100000000000000010000001

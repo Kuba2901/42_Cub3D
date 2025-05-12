@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:48:44 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/12 10:44:29 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/12 16:32:26 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,8 +151,6 @@ void	parse_texture(t_parser_config *parser_config, char *line)
 		parse_and_check_texture(parser_config, TEX_TYPE_FLOOR, line);
 	else if (ft_strncmp(line, "CE", 2) == 0)
 		parse_and_check_texture(parser_config, TEX_TYPE_CEILING, line);
-	else if (ft_strncmp(line, "XX", 2) == 0)
-		parse_and_check_texture(parser_config, TEX_TYPE_ENEMY, line);
 	else
 	{
 		free(line);
