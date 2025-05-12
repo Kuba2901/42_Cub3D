@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:49:42 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/11 16:49:07 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/11 19:52:18 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ int		is_map_line(char *line);
 char	*replace_tabs(char* line);
 char	**realloc_map(char **map, size_t new_size);
 void	parse_map_line(t_parser_config *parser_config, char *line);
-void	parse_texture_or_colour_line(t_parser_config *parser_config, char *line);
+void	parse_and_check_texture(t_parser_config *parser_config, t_tex_type texture_type, char *line);
+void	parse_texture(t_parser_config *parser_config, char *line);
 void	parse_line(t_parser_config *parser_config, char *line);
 void	parse(t_parser_config *parser_config);
 
