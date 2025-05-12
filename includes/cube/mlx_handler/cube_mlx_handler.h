@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:23:13 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 21:24:14 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/11 21:48:42 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # define WINDOW_WIDTH 1280
 # define WINDOW_HEIGHT 720
-# define WINDOW_TITLE "Kuba3D"
+# define WINDOW_TITLE "CUBE3D"
 
 /* NORMINETTE ENFORCED BEHAVIOUR -> SHOULD BE WINDOW_WIDTH/HEIGHT  /  2 */
 # define WINDOW_CENTER_X 640
