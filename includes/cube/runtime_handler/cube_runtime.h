@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:24:31 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 21:24:40 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:10:09 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ typedef struct s_runtime_handler
 	double	frames_per_second;
 	t_bool	display_credits;
 	t_bool	displaying_credits;
+
+	t_bool	displaying_intro;
 }	t_runtime_handler;
 
 t_runtime_handler	*runtime_runtime_handler_init( void );

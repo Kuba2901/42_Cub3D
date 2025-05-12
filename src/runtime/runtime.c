@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:03:31 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:17:57 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:07:17 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_runtime_handler	*runtime_runtime_handler_init( void )
 	runtime_handler->running = CUBE_TRUE;
 	runtime_handler->display_credits = CUBE_FALSE;
 	runtime_handler->displaying_credits = CUBE_FALSE;
+	runtime_handler->displaying_intro = CUBE_TRUE;
 	return (runtime_handler);
 }
 

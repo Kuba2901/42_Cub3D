@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:26:12 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 21:26:42 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:00:39 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_runtime_handler	t_runtime_handler;
 typedef struct s_input_handler		t_input_handler;
 typedef struct s_dda_data			t_dda_data;
 typedef struct s_audio_system		t_audio_system;
+
+# define CUBE_SECOND_IN_US 1000000
 
 typedef struct s_cube
 {

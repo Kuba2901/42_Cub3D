@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:23:13 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 21:48:42 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 11:56:26 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # define WINDOW_CENTER_X 640
 # define WINDOW_CENTER_Y 360
 # define FOV .66
+
+# define WINDOW_INTRO "./assets/intro/intro.xpm"
 
 typedef struct s_image_data
 {

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 20:38:57 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 20:51:31 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 12:07:59 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@ int	input_handler_key_press(int key_code, t_cube *cube)
 	t_input_handler_keys	*keys;
 
 	keys = cube->input_handler->keys;
-	if (key_code == KEY_W)
+	if (cube->runtime_handler->displaying_intro)
+		cube->runtime_handler->displaying_intro = CUBE_FALSE;
+	else if (key_code == KEY_W)
 		keys->w = 1;
 	else if (key_code == KEY_A)
 		keys->a = 1;
@@ -36,9 +38,7 @@ int	input_handler_key_press(int key_code, t_cube *cube)
 	else if (key_code == KEY_ESC)
 		keys->escape = 1;
 	else if (key_code == KEY_E)
-	{
 		keys->e = 1;
-	}
 	return (0);
 }
 
