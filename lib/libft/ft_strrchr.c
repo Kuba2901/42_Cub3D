@@ -3,27 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 21:30:23 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/19 21:30:26 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/09 14:33:14 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/09 15:47:58 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-/*
- * Like strchr() but in reverse
- */
 char	*ft_strrchr(const char *s, int c)
 {
-	int	offset;
+	char	*res;
+	int		t;
 
-	offset = ft_strlen(s);
-	while (offset >= 0)
+	res = (char *)s;
+	t = 0;
+	if (*s == '\0' && c != 0)
+		return (0);
+	while (*s != '\0')
 	{
-		if ((unsigned char)*(s + offset) == (unsigned char)c)
-			return ((char *)(s + offset));
-		offset--;
+		if (*s == (char)c)
+		{
+			res = (char *)s;
+			t = 1;
+		}
+		s++;
 	}
+	if (*s == (char)c)
+	{
+		res = (char *)s;
+		return (res);
+	}
+	if (t)
+		return (res);
 	return (0);
 }

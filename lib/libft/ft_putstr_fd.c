@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 16:30:24 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/02/12 12:38:46 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/18 21:12:31 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/18 21:12:33 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-size_t	ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-	int	size;
-
-	if (fd < 0)
-		return (0);
-	if (s == NULL)
-		return (write(fd, "(null)", 6));
-	size = ft_strlen(s);
-	return (write(fd, s, size));
+	if (s)
+	{
+		while (*s)
+		{
+			write (fd, s, 1);
+			s++;
+		}
+	}
 }

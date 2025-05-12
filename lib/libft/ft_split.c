@@ -3,82 +3,67 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:48:58 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/25 10:49:01 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/12 14:08:25 by gromiti           #+#    #+#             */
+/*   Updated: 2024/04/25 12:42:30 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-static int	count_words(const char *str, char c)
+static void	ft_alloc(char **arr, char const *s, char c)
 {
-	int	i;
-	int	words;
+	char		**tmp_arr;
+	char const	*tmp;
 
-	i = 0;
-	words = 0;
-	while (str[i])
+	tmp = s;
+	tmp_arr = arr;
+	while (*tmp)
 	{
-		if (str[i] != c && (str[i + 1] == c || str[i + 1] == '\0'))
-			words++;
-		i++;
-	}
-	return (words);
-}
-
-static void	new_string(const char *str, int start, int end, char *dest)
-{
-	int	i;
-
-	i = 0;
-	while (i < end)
-	{
-		dest[i] = str[start + i];
-		i++;
-	}
-	dest[i] = '\0';
-}
-
-static void	aux(char **arr, const char *str, char c)
-{
-	int	i;
-	int	j;
-	int	z;
-
-	i = 0;
-	z = 0;
-	while (str[i] && z <= count_words(str, c))
-	{
-		if (str[i] == c)
-			i++;
-		else
+		while (*s == c)
+			++s;
+		tmp = s;
+		while (*tmp && *tmp != c)
+			++tmp;
+		if (*tmp == c || tmp > s)
 		{
-			j = 0;
-			while (str[i + j] != c && str[i + j])
-				j++;
-			arr[z] = (char *)malloc(sizeof(char) * (j + 1));
-			if (!arr[z])
-				return ;
-			new_string(str, i, j, arr[z]);
-			z++;
-			i += j;
+			*tmp_arr = ft_substr(s, 0, tmp - s);
+			s = tmp;
+			++tmp_arr;
 		}
 	}
+	*tmp_arr = '\0';
 }
 
-char	**ft_split(const char *str, char c)
+static int	ft_count_words(char const *s, char c)
+{
+	int	count;
+
+	if (!s)
+		return (0);
+	count = 0;
+	while (*s)
+	{
+		while (*s == c)
+			++s;
+		if (*s)
+			++count;
+		while (*s && *s != c)
+			++s;
+	}
+	return (count);
+}
+
+char	**ft_split(char const *s, char c)
 {
 	char	**arr;
-	int		n_words;
 
-	if (!str)
+	if (!s)
 		return (NULL);
-	n_words = count_words(str, c);
-	arr = ft_calloc(n_words + 1, sizeof(char *));
-	arr[n_words] = NULL;
+	arr = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
 	if (!arr)
 		return (NULL);
-	aux(arr, str, c);
+	ft_alloc(arr, s, c);
 	return (arr);
 }

@@ -3,41 +3,57 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 11:59:24 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/19 11:59:27 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/15 14:26:57 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/22 17:11:49 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-/**
- * Measure, allocate and write :)
-*/
+static size_t	ft_num_lenght(int n)
+{
+	size_t	lenght;
+
+	lenght = 0;
+	if (n == 0)
+		return (1);
+	if (n < 0)
+		lenght++;
+	while (n != 0)
+	{
+		n /= 10;
+		lenght++;
+	}
+	return (lenght);
+}
+
 char	*ft_itoa(int n)
 {
-	char	*result;
-	int		num_size;
+	char		*num;
+	int			cont;
+	long int	nb;
 
-	num_size = ft_numdigits(n);
-	result = ft_calloc(num_size + 1, sizeof(char));
-	if (!result)
+	nb = (long int)n;
+	cont = ft_num_lenght(n);
+	num = (char *)malloc(sizeof(char) * (ft_num_lenght(n) + 1));
+	if (!num)
 		return (NULL);
-	result[num_size] = '\0';
+	num[cont] = '\0';
+	cont -= 1;
+	if (n == 0)
+		num[0] = '0';
 	if (n < 0)
-		result[0] = '-';
-	else if (n < 10 && n >= 0)
 	{
-		result[0] = n + ASCII_ZERO;
-		return (result);
+		num[0] = '-';
+		nb *= -1;
 	}
-	while (--num_size >= 0 && n)
+	while (nb != 0)
 	{
-		if (n < 0)
-			result[num_size] = (-(n % 10)) + ASCII_ZERO;
-		else
-			result[num_size] = (n % 10) + ASCII_ZERO;
-		n /= 10;
+		num[cont] = (nb % 10) + '0';
+		nb /= 10;
+		cont --;
 	}
-	return (result);
+	return (num);
 }

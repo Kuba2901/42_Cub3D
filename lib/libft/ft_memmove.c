@@ -3,42 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:27:58 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/08 18:08:37 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/11 16:10:04 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/11 17:11:08 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-/*
- * Copy first n bytes to destination. 
- * Memory may overlap, as though the bytes in src are first copied
- * in memory that does not overlap src or dest. 
- */
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*from;
-	unsigned char	*to;
-	int				i;
+	char		*d;
+	const char	*s;
+	size_t		cont;
 
-	from = (unsigned char *)src;
-	to = (unsigned char *)dest;
-	if (from == to || n == 0)
-		return (dest);
-	else if (to > from && to - from < (int)n)
+	d = (char *)dest;
+	s = (char *)src;
+	cont = 0;
+	if (!dest && !src)
+		return (NULL);
+	if (src < dest && src + n > dest)
 	{
-		i = n - 1;
-		while (i >= 0)
-		{
-			to[i] = from[i];
-			i--;
-		}
+		while (n--)
+			d[n] = s[n];
 		return (dest);
 	}
-	else
+	while (cont < n)
 	{
-		ft_memcpy(dest, src, n);
-		return (dest);
+		d[cont] = s[cont];
+		cont++;
 	}
+	return (dest);
 }
