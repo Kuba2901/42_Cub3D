@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <cube.h>
+#include <cube_settings_args.h>
 #include <cube_settings.h>
 #include <cube_entities.h>
 #include <cube_input_handler.h>
@@ -22,12 +23,34 @@
 #include <cube_drawing.h>
 #include <cube_audio_integration.h>
 
+#include <parse.h>
+
 t_cube	*cube_cube_init(int argc, char **argv)
 {
 	t_cube	*cube;
+	//check with kuba if we want include the parser struct within cube struct
+	t_parser_config	*parser_config;
 
 	printf("0... Checking program arguments\n");
 	check_args(argc, argv);
+
+	parser_config = init_parser_config(argv[1]);
+	if (!parser_config)
+	{
+		printf("Error\nFailed to initialize parser_config\n");
+		exit(EXIT_FAILURE);
+	}
+	printf("1... Initialized parser_config\n");
+
+	parse(parser_config);
+	printf("2... Parsing completed\n");
+
+	puts("printing parsed values");
+	for (size_t i = 0; i < parser_config->map_config->height; i++)
+	{
+		printf("%s\n", parser_config->map_config->map[i]);
+	}
+
 
 	cube = malloc(sizeof(t_cube));
 	if (!cube)
@@ -35,8 +58,10 @@ t_cube	*cube_cube_init(int argc, char **argv)
 	cube->mlx_handler = mlx_mlx_handler_init();
 	printf("2... Initialized mlx_handler\n");
 
-	cube->cube_settings = settings_cube_init(settings_map_config_init(),
-		settings_tex_config_init(tex_paths, cube->mlx_handler));
+	cube->cube_settings = settings_cube_init(settings_map_config_init(parser_config->map_config->map,
+			parser_config->map_config->width, parser_config->map_config->height),
+		// settings_tex_config_init(parser_config->textures_config, cube->mlx_handler)); // texture needs to be an array
+		settings_tex_config_init(parser_config->textures_paths, cube->mlx_handler));
 	printf("3... Initialized cube_settings\n");
 
 	cube->entities = entities_entities_init(entities_entities_config_init(cube->cube_settings));
@@ -67,6 +92,7 @@ void	cube_cube_free(t_cube *cube)
 	mlx_mlx_handler_free(cube->mlx_handler);
 	runtime_runtime_handler_free(cube->runtime_handler);
 	dda_free(cube->dda_data);
+	free_parser_config(cube->parser_config, NULL);
 	safe_free(cube);
 	exit(EXIT_SUCCESS);
 }

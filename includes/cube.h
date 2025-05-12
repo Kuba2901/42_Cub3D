@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:26:12 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 12:00:39 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/12 16:15:30 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ typedef struct s_mlx_handler		t_mlx_handler;
 typedef struct s_runtime_handler	t_runtime_handler;
 typedef struct s_input_handler		t_input_handler;
 typedef struct s_dda_data			t_dda_data;
+typedef struct	s_parser_config	t_parser_config;
 typedef struct s_audio_system		t_audio_system;
 
 # define CUBE_SECOND_IN_US 1000000
@@ -34,10 +35,10 @@ typedef struct s_cube
 	t_input_handler		*input_handler;
 	t_dda_data			*dda_data;
 	t_audio_system		*audio_system;
+	t_parser_config		*parser_config;
 }	t_cube;
 
-t_cube	*cube_cube_init(char **map, int width, int height,
-			const char **tex_paths);
+t_cube	*cube_cube_init(int argc, char **argv);
 void	cube_cube_free(t_cube *cube);
 
 #endif

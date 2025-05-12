@@ -66,6 +66,6 @@ t_entities_config	entities_entities_config_init(
 	entities_config.exit_open_frames_ptr
 		= cube_settings->tex_config->exit_open_frames;
 	entities_config.exit_location = cube_settings->map_config->exit_location;
-	ft_printf("Entities configuration initialized successfully.\n");
+	printf("Entities configuration initialized successfully.\n");
 	return (entities_config);
 }

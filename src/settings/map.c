@@ -1,7 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map.c                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/09 19:44:41 by gromiti           #+#    #+#             */
+/*   Updated: 2025/05/11 15:05:41 by gromiti          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <cube_settings_map.h>
 #include <stdlib.h>
 #include <utils.h>
 #include <stdio.h>
+#include <fcntl.h>
+#include <libft.h>
 
 static size_t	settings_map_config_count_enemies(char **map, int width, int height)
 {
