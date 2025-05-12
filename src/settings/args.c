@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:02:31 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/09 17:18:03 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/11 15:16:18 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@
 void	check_extension(char *filename)
 {
 	if (ft_strncmp(filename + ft_strlen(filename) - 4, ".cub", 4) != 0)
+	{
 		ft_putstr_fd("Error\nInvalid file extension. Expected .cub\n", 2);
-	exit (EXIT_FAILURE);
+		exit (EXIT_FAILURE);
+	}
 }
 
 /*
@@ -44,7 +46,7 @@ void	check_args(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		ft_putstr_fd("Error\nInvalid number of arguments\n");
+		ft_putstr_fd("Error\nInvalid number of arguments\n", 2);
 		exit (EXIT_FAILURE);
 	}
 	check_extension(argv[1]);
