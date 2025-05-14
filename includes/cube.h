@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:26:12 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 12:00:39 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/14 14:47:48 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ typedef struct s_cube
 	t_audio_system		*audio_system;
 }	t_cube;
 
-t_cube	*cube_cube_init(char **map, int width, int height,
-			const char **tex_paths);
+t_cube	*cube_cube_init(int argc, char **argv);
 void	cube_cube_free(t_cube *cube);
 
 #endif

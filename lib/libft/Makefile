@@ -1,54 +1,63 @@
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror -g
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/01/11 17:31:20 by gromiti           #+#    #+#              #
+#    Updated: 2024/04/21 19:02:23 by gromiti          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
 NAME = libft.a
 
-SRC =	ft_putchar_fd.c ft_atoi.c ft_putendl_fd.c \
-		ft_bzero.c ft_putnbr_fd.c ft_calloc.c \
-		ft_putstr_fd.c ft_isalnum.c ft_split.c \
-		ft_isalpha.c ft_strchr.c ft_isascii.c \
-		ft_strcmp.c ft_isdigit.c ft_strdup.c \
-		ft_islower.c ft_striteri.c ft_isprint.c \
-		ft_strjoin.c ft_isupper.c ft_strlcat.c \
-		ft_itoa.c ft_strlcpy.c ft_strlen.c \
-		ft_strmapi.c ft_strncmp.c ft_strncpy.c \
-		ft_strnlen.c ft_strnstr.c ft_strrchr.c \
-		ft_strrev.c ft_strtrim.c ft_memchr.c \
-		ft_substr.c ft_memcmp.c ft_tolower.c \
-		ft_memcpy.c ft_toupper.c ft_memmove.c \
-		ft_memrchr.c ft_memset.c ft_numdigits.c \
-		ft_putnstr_fd.c ft_putnbrbase_fd.c ft_putpointer_fd.c \
-		ft_manage_conversion.c ft_printf.c get_next_line.c \
-		get_next_line_utils.c ft_freelist.c ft_strarr_len.c
+SRCS = ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
+	   ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
+	   ft_strlcpy.c ft_strlcat.c ft_toupper.c ft_tolower.c ft_strchr.c \
+	   ft_strrchr.c ft_strncmp.c ft_memchr.c ft_memcmp.c ft_strnstr.c \
+	   ft_atoi.c ft_calloc.c ft_strdup.c ft_substr.c ft_strjoin.c \
+	   ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c ft_striteri.c \
+	   ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c ft_putnbr_fd.c \
+	   get_next_line.c get_next_line_utils.c
 
-BSRCS =	ft_lstdelone.c ft_lstadd_front.c ft_lstadd_back.c \
-		ft_lstclear.c ft_lstnew.c ft_lstlast.c \
-		ft_lstiter.c ft_lstmap.c ft_lstsize.c\
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(SRCS:%.c=%.o)
 
-BOBJS = $(BSRCS:.c=.o)
+BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c \
+		ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c \
+		ft_lstmap.c
 
-HEADER = libft.h
+BONUS_OBJS = $(BONUS:%.c=%.o)
 
-all: $(NAME)
+CC = gcc
 
-$(NAME): $(OBJS)
-	$(AR) -r $@ $?
+CFLAGS = -Wall -Wextra -Werror
+MAKEFLAGS += --silent
 
-bonus: $(OBJS) $(BOBJS)
-	$(AR) -r $(NAME) $?
+RM = rm -f
 
-%.o: %.c
-	$(CC) -c $(CFLAGS) $?
+INC = "."
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
+
+$(NAME): ${OBJS}
+	ar rcs $(NAME) $(OBJS)
+	ranlib $(NAME)
+
+bonus: $(NAME) $(BONUS_OBJS)
+	ar rc $(NAME) $(BONUS_OBJS)
+	ranlib $(NAME)
+
+all: $(NAME) $(BONUS_NAME)
 
 clean:
-	rm -rf $(OBJS) $(BOBJS)
+	$(RM) $(OBJS)
+	$(RM) $(BONUS_OBJS)
 
 fclean: clean
-	rm -f $(NAME) bonus
+	$(RM) $(NAME) $(BONUS_OBJS)
 
-re : fclean all
+re: fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: all clean fclean re .c.o

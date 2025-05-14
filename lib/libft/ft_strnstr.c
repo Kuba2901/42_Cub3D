@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/19 19:29:29 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/30 15:31:13 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/09 17:08:05 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/11 13:33:25 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-char	*ft_strnstr(const char *s, const char *to_find, size_t len)
+char	*ft_strnstr(const char *s1, const char *s2, size_t len)
 {
-	size_t	j;
+	int		cont2;
 
-	if (!*to_find)
-		return ((char *)s);
-	if (!len || !*s)
+	if (*s2 == '\0')
+		return ((char *)s1);
+	if (len == 0)
 		return (NULL);
-	while (*s && len > 0)
+	while (*s1 && len)
 	{
-		if (*s == *to_find)
+		cont2 = 0;
+		while ((*(s1 + cont2) == s2[cont2]) && (len - cont2) > 0)
 		{
-			j = 0;
-			while (j < len && to_find[j] && s[j] == to_find[j])
-				j++;
-			if (to_find[j] == '\0')
-				return ((char *)s);
+			if (s2[cont2 + 1] == '\0' && s2[0] != '\0')
+				return ((char *)s1);
+			cont2++;
 		}
-		s++;
+		s1++;
 		len--;
 	}
-	return (0);
+	return (NULL);
 }

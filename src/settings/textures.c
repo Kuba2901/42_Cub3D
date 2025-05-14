@@ -7,7 +7,7 @@
 #include <cube_mlx_handler.h>
 #include <cube_settings_animated_sprites.h>
 
-t_tex_config	*settings_tex_config_init(const char **paths, t_mlx_handler *mlx_handler)
+t_tex_config	*settings_tex_config_init(char **paths, t_mlx_handler *mlx_handler)
 {
 	t_tex_config	*tex_config;
 
@@ -27,7 +27,7 @@ t_tex_config	*settings_tex_config_init(const char **paths, t_mlx_handler *mlx_ha
 	return (tex_config);
 }
 
-static t_image_data *settings_tex_get_image(const char *path, t_mlx_handler *mlx_handler)
+static t_image_data *settings_tex_get_image(char *path, t_mlx_handler *mlx_handler)
 {
     t_image_data	*img;
     int				img_width;
@@ -36,7 +36,7 @@ static t_image_data *settings_tex_get_image(const char *path, t_mlx_handler *mlx
 	img = malloc(sizeof(t_image_data));
 	if (!img)
 		return (NULL);
-    img->img = mlx_xpm_file_to_image(mlx_handler->mlx, (char *)path, &img_width, &img_height);
+    img->img = mlx_xpm_file_to_image(mlx_handler->mlx, path, &img_width, &img_height);
     if (!img->img)
 	{
 		free(img);
@@ -52,7 +52,7 @@ static t_image_data *settings_tex_get_image(const char *path, t_mlx_handler *mlx
     return (img);
 }
 
-size_t	*settings_tex_get_texels(const char *path, t_mlx_handler *mlx_handler)
+size_t	*settings_tex_get_texels(char *path, t_mlx_handler *mlx_handler)
 {
 	t_image_data			*img;
 	size_t					*texels;
@@ -89,12 +89,12 @@ size_t	*settings_tex_get_texels(const char *path, t_mlx_handler *mlx_handler)
 	}
 	mlx_destroy_image(mlx_handler->mlx, tex_data.img->img);
 	free(tex_data.img);
-	ft_printf("Successfully loaded texture: %s\n", path);
+	printf("Successfully loaded texture: %s\n", path);
 	return (texels);	
 }
 
 size_t	*settings_tex_config_set_tex(t_tex_config *config, t_tex_type tex_type,
-	t_mlx_handler *mlx_handler, const char *path)
+	t_mlx_handler *mlx_handler, char *path)
 {
 	if (!config)
 		return (NULL);
@@ -102,7 +102,7 @@ size_t	*settings_tex_config_set_tex(t_tex_config *config, t_tex_type tex_type,
 	return (config->textures[tex_type]);
 }
 
-t_tex_type	settings_tex_get_tex_type(const char *path)
+t_tex_type	settings_tex_get_tex_type(char *path)
 {
 	if (!path)
 		return (TEX_TYPE_NORTH);
@@ -123,7 +123,7 @@ t_tex_type	settings_tex_get_tex_type(const char *path)
 	return (TEX_TYPE_NORTH);
 }
 
-void	settings_tex_config_set_tex_all(t_tex_config *config, t_mlx_handler *mlx_handler, const char **paths)
+void	settings_tex_config_set_tex_all(t_tex_config *config, t_mlx_handler *mlx_handler, char **paths)
 {
 	int	i;
 
@@ -136,7 +136,7 @@ void	settings_tex_config_set_tex_all(t_tex_config *config, t_mlx_handler *mlx_ha
 	while (++i < TEXTURE_TYPES_COUNT)
 	{
 		settings_tex_config_set_tex(config, 
-			settings_tex_get_tex_type((char *)paths[i]), mlx_handler, (char *)paths[i]);
+			settings_tex_get_tex_type(paths[i]), mlx_handler, paths[i]);
 	}
 }
 

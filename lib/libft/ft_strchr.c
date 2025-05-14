@@ -3,19 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:36:16 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/08 12:36:31 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/09 13:44:10 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/11 12:59:55 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-/*
- * The  strchr()  function  returns a pointer to the first occurrence 
- * of the character c in the string s.
- */
 char	*ft_strchr(const char *s, int c)
 {
-	return (ft_memchr(s, c, ft_strlen(s) + 1));
+	char	cast;
+	int		t;
+
+	cast = (char) c;
+	t = 0;
+	if (*s == '\0' && c != 0)
+		return (0);
+	while (*s != '\0')
+	{
+		if (*s == cast)
+		{
+			return ((char *)s);
+			t = 1;
+		}
+		s++;
+	}
+	if (*s == cast)
+		return ((char *)s);
+	if (t == 1)
+		return ((char *)s);
+	return (0);
 }

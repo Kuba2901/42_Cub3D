@@ -3,40 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 10:23:22 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/08 18:24:37 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/11 12:52:43 by gromiti           #+#    #+#             */
+/*   Updated: 2024/05/27 17:07:21 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-/*
- * The atoi() function converts the initial portion of the string pointed to 
- * bynptr to int.
- */
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *s)
 {
-	int	result;
-	int	sign;
+	long int	res;
+	int			sign;
 
-	result = 0;
+	res = 0;
 	sign = 1;
-	while (*nptr == ' ' || (*nptr >= 9 && *nptr <= 13))
+	while ((*s == 32) || ((9 <= *s) && (*s <= 13)))
+		s++;
+	if (*s == 45 || *s == 43)
 	{
-		nptr++;
+		if (*s == 45)
+			sign = -sign;
+		s++;
 	}
-	if (*nptr == '-')
+	while ((48 <= *s) && (*s <= 57))
 	{
-		sign *= -1;
-		nptr++;
+		res = (res * 10) + (*s - 48);
+		s++;
 	}
-	else if (*nptr == '+')
-		nptr++;
-	while (*nptr && *nptr >= '0' && *nptr <= '9')
-	{
-		result = result * 10 + (*nptr - '0');
-		nptr++;
-	}
-	return (result * sign);
+	return (res * sign);
 }

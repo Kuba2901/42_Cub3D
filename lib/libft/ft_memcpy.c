@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 12:09:21 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/08 12:09:28 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/11 14:59:25 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/11 15:42:33 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-/*
- * Copy first n bytes to destination, memory must not overlap,
- * if so, use memmove.
- */
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
-	unsigned char	*s;
+	unsigned char		*d;
+	unsigned const char	*s;
 
+	if (!dest && !src)
+		return (dest);
 	d = (unsigned char *)dest;
-	s = (unsigned char *)src;
-	if (!d && !s)
-		return (NULL);
-	while (n--)
+	s = (const unsigned char *)src;
+	while (n)
 	{
-		*d++ = *s++;
+		*d = *s;
+		d++;
+		s++;
+		n--;
 	}
 	return (dest);
 }

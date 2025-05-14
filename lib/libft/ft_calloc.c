@@ -3,36 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/08 11:28:29 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/21 11:44:39 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/12 12:16:35 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/12 12:16:39 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*
- * The calloc() function allocates memory for an array of nmemb elements of
- * size bytes each and returns a pointer to  the  allocated memory.
- * The memory is set to zero.
- */
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void	*p;
-	size_t	bytes;
+	void	*res;
+	size_t	size_tot;
 
-	if (nmemb == 0 || size == 0)
-	{
-		nmemb = 1;
-		size = 1;
-	}
-	bytes = nmemb * size;
-	if (bytes / size != nmemb)
+	size_tot = nmemb * size;
+	if (nmemb + size < size || size + nmemb < nmemb || size_tot > 2147483424)
 		return (NULL);
-	p = malloc(bytes);
-	if (!p)
+	res = malloc(size_tot);
+	if (res == NULL)
 		return (NULL);
-	ft_bzero(p, bytes);
-	return (p);
+	while (size_tot--)
+		((char *)res)[size_tot] = 0;
+	return (res);
 }
