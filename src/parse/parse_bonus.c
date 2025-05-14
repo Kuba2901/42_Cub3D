@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:48:44 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 18:39:33 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parse_bonus.h>
+#include <parse_mandatory.h>
+# include <parse_map_utils.h>
 
 void	parse_bonus_line(t_parser_config *parser_config, char *line)
 {

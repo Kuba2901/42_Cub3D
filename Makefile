@@ -105,6 +105,7 @@ SRC_COMMON := \
 	./src/audio/audio_impl.c \
 	./src/audio/audio_controls.c \
 	./src/animations/animations_animation_controller.c \
+	./src/parse/parse_map_utils.c \
 	./src/animations/animations.c
 
 # Mandatory-specific source files
@@ -120,8 +121,7 @@ SRC_BONUS := \
 	./src/parse/parse_texture_bonus.c \
 	./src/parse/parse_map_bonus.c \
 	./src/parse/parse_bonus.c \
-	./src/parse/init_bonus.c \
-	./src/parse/parse_map_utils.c
+	./src/parse/init_bonus.c 
 
 # Object files for mandatory and bonus
 OBJS_COMMON := $(SRC_COMMON:.c=.o)

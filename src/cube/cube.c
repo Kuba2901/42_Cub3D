@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/13 18:05:23 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:14:22 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ t_cube	*cube_cube_init(int argc, char **argv)
 
 	cube->cube_settings = settings_cube_init(settings_map_config_init(parser_config->map_config->map,
 			parser_config->map_config->width, parser_config->map_config->height),
-	settings_tex_config_init(parser_config->textures_paths, cube->mlx_handler));
+	settings_tex_config_init(parser_config->textures_paths, cube->mlx_handler, parser_config->ceiling_color, parser_config->floor_color));
 	printf("3... Initialized cube_settings\n");
 	
 	cube->entities = entities_entities_init(entities_entities_config_init(cube->cube_settings));

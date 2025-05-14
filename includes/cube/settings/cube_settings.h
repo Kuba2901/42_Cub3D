@@ -4,12 +4,15 @@
 # include <cube_settings_textures.h>
 # include <cube_settings_map.h>
 # include <utils.h>
-
+# include <parse_mandatory.h>
 typedef struct	s_cube_settings
 {
 	t_map_config	*map_config;
 	t_tex_config	*tex_config;
 	t_bool			valid;
+
+	t_color			floor_color;
+	t_color			ceiling_color;
 }	t_cube_settings;
 
 t_cube_settings	*settings_cube_init(t_map_config *map_config, t_tex_config *tex_config);

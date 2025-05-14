@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_mandatory_texture.c                          :+:      :+:    :+:   */
+/*   parse_texture_mandatory.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:29:31 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 15:26:40 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
+# include <parse_map_utils.h>
 
 void	parse_texture(t_parser_config *parser_config, \
 						t_tex_type_mandatory tex_type, char *line)

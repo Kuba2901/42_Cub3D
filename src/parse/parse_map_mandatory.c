@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_mandatory_map.c                              :+:      :+:    :+:   */
+/*   parse_map_mandatory.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:26:28 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/13 16:11:17 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
+# include <parse_map_utils.h>
 
 int	is_map_line(char *line)
 {

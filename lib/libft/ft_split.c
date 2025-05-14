@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:25 by gromiti           #+#    #+#             */
-/*   Updated: 2024/04/25 12:42:30 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:17:57 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static void	ft_alloc(char **arr, char const *s, char c)
 {
@@ -33,7 +34,7 @@ static void	ft_alloc(char **arr, char const *s, char c)
 			++tmp_arr;
 		}
 	}
-	*tmp_arr = '\0';
+	*tmp_arr = NULL;
 }
 
 static int	ft_count_words(char const *s, char c)

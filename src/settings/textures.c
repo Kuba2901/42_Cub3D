@@ -6,8 +6,12 @@
 #include <libft.h>
 #include <cube_mlx_handler.h>
 #include <cube_settings_animated_sprites.h>
+#include <parse_mandatory.h>
 
-t_tex_config	*settings_tex_config_init(char **paths, t_mlx_handler *mlx_handler)
+t_tex_config	*settings_tex_config_init(char **paths,
+	t_mlx_handler *mlx_handler,
+	t_color	*ceil_color,
+	t_color *floor_color)
 {
 	t_tex_config	*tex_config;
 
@@ -15,14 +19,18 @@ t_tex_config	*settings_tex_config_init(char **paths, t_mlx_handler *mlx_handler)
 	if (!tex_config)
 		return (NULL);
 	tex_config->textures = malloc(sizeof(size_t *) * (TEXTURE_TYPES_COUNT));
-	tex_config->enemy_frames = settings_enemy_frames_init(mlx_handler);
-	tex_config->exit_idle_frames = settings_exit_idle_frames_init(mlx_handler);
-	tex_config->exit_open_frames = settings_exit_open_frames_init(mlx_handler);
 	if (!tex_config->textures)
 	{
 		safe_free(tex_config);
 		return (NULL);
 	}
+	tex_config->enemy_frames = settings_enemy_frames_init(mlx_handler);
+	tex_config->exit_idle_frames = settings_exit_idle_frames_init(mlx_handler);
+	tex_config->exit_open_frames = settings_exit_open_frames_init(mlx_handler);
+	if (ceil_color)
+		tex_config->ceiling_color = settings_color_init(ceil_color);
+	if (floor_color)
+		tex_config->floor_color = settings_color_init(floor_color);
 	settings_tex_config_set_tex_all(tex_config, mlx_handler, paths);
 	return (tex_config);
 }
@@ -104,7 +112,7 @@ size_t	*settings_tex_config_set_tex(t_tex_config *config, t_tex_type tex_type,
 
 t_tex_type	settings_tex_get_tex_type(char *path)
 {
-	if (!path)
+	if (!path || !ft_strlen(path))
 		return (TEX_TYPE_NORTH);
 	if (!ft_strncmp(path, "NO", 2))
 		return (TEX_TYPE_NORTH);
@@ -193,4 +201,21 @@ void settings_tex_config_free(t_tex_config *tex_config)
     }
     
     safe_free(tex_config);
+}
+
+t_tex_color		settings_color_init(t_color *clr)
+{
+	t_tex_color	color;
+
+	if (!clr)
+	{
+		color.r = 0;
+		color.g = 0;
+		color.b = 0;
+		return (color);
+	}
+	color.r = clr->r;
+	color.g = clr->g;
+	color.b = clr->b;
+	return (color);
 }

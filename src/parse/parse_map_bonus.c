@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_bonus_map.c                                  :+:      :+:    :+:   */
+/*   parse_map_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:33:32 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 15:34:08 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parse_bonus.h>
+#include <parse_mandatory.h>
+# include <parse_map_utils.h>
 
 int	is_bonus_map_line(char *line)
 {

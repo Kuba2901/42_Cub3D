@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_mandatory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:27:02 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 14:54:45 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
+# include <parse_map_utils.h>
 
 void	parse_line(t_parser_config *parser_config, char *line)
 {

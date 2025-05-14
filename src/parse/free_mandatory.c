@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   free_mandatory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:01:25 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 14:53:11 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
+# include <parse_map_utils.h>
 
 void	free_parser_map_config(t_map_parse *map_config)
 {

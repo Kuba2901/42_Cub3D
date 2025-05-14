@@ -2,11 +2,12 @@ NO ./assets/textures/biohazard/xpm/environment/wall_north.xpm
 SO ./assets/textures/biohazard/xpm/environment/wall_south.xpm
 EA ./assets/textures/biohazard/xpm/environment/wall_east.xpm
 WE ./assets/textures/biohazard/xpm/environment/wall_west.xpm
-F 200,210,148
-C 246,001,054
+FL ./assets/textures/biohazard/xpm/environment/floor.xpm
+CE ./assets/textures/biohazard/xpm/environment/ceiling.xpm
 
-111111111111111111111111
-100000E00000000010000001
-101000000000000000000001
-101000000000000010000001
-111111111111111111111111
+111111
+100101
+1010X1
+1100E1
+1Q00X1
+111111
