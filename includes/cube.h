@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:26:12 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 16:15:30 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/14 14:47:48 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ typedef struct s_mlx_handler		t_mlx_handler;
 typedef struct s_runtime_handler	t_runtime_handler;
 typedef struct s_input_handler		t_input_handler;
 typedef struct s_dda_data			t_dda_data;
-typedef struct	s_parser_config		t_parser_config;
 typedef struct s_audio_system		t_audio_system;
 
 # define CUBE_SECOND_IN_US 1000000

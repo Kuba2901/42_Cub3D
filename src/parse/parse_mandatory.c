@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_bonus.c                                      :+:      :+:    :+:   */
+/*   parse_mandatory.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/09 19:48:44 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 18:39:33 by gromiti          ###   ########.fr       */
+/*   Created: 2025/05/12 17:27:02 by gromiti           #+#    #+#             */
+/*   Updated: 2025/05/14 14:54:45 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <parse_bonus.h>
+#include <parse_mandatory.h>
 
-void	parse_bonus_line(t_parser_config *parser_config, char *line)
+void	parse_line(t_parser_config *parser_config, char *line)
 {
-	if (is_bonus_map_line(line))
-		parse_bonus_map_line(parser_config, line);
+	if (is_map_line(line))
+		parse_map_line(parser_config, line);
 	else if (!parser_config->map_config->parsing_map)
-		parse_bonus_texture(parser_config, line);
+		parse_texture_or_color(parser_config, line);
 	else
 		free_parser_config(parser_config, line, \
 			"Error\nInvalid line after map started\n");
@@ -41,10 +41,10 @@ void	parse(t_parser_config *parser_config)
 			line = get_next_line(parser_config->map_config->fd);
 			continue ;
 		}
-		parse_bonus_line(parser_config, line);
+		parse_line(parser_config, line);
 		free(line);
 		line = get_next_line(parser_config->map_config->fd);
 	}
 	parser_config->map_config->height--;
-	check_parsed_bonus_textures(parser_config);
+	check_parsed_mandatory_textures(parser_config);
 }

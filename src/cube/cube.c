@@ -6,10 +6,15 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 16:13:05 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/13 18:05:23 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#if CUBE_BONUS
+# include <parse_bonus.h>
+#else
+# include <parse_mandatory.h>
+#endif
 #include <cube.h>
 #include <cube_settings_args.h>
 #include <cube_settings.h>
@@ -22,8 +27,6 @@
 #include <stdio.h>
 #include <cube_drawing.h>
 #include <cube_audio_integration.h>
-
-#include <parse.h>
 
 t_cube	*cube_cube_init(int argc, char **argv)
 {
@@ -44,12 +47,6 @@ t_cube	*cube_cube_init(int argc, char **argv)
 	parse(parser_config);
 	printf("2... Parsing completed\n");
 
-	puts("printing parsed values");
-	for (size_t i = 0; i < parser_config->map_config->height; i++)
-	{
-		printf("%s\n", parser_config->map_config->map[i]);
-	}
-
 	cube = malloc(sizeof(t_cube));
 	if (!cube)
 		return (NULL);
@@ -69,7 +66,7 @@ t_cube	*cube_cube_init(int argc, char **argv)
 	cube->input_handler = input_handler_init();
 	cube->dda_data = dda_init();
 	cube->audio_system = audio_system_init();
-	free_parser_config(parser_config, NULL);
+	free_parser_config(parser_config, NULL, NULL);
 	return (cube);
 }
 
