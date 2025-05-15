@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_mandatory.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:29:31 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 17:02:22 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 20:08:55 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,11 @@ void	cast_colors(t_color *color, char **split, char *line)
 	if (color->r < 0 || color->r > 255 || \
 		color->g < 0 || color->g > 255 || \
 		color->b < 0 || color->b > 255)
+	{
+		safe_free_split(split);
 		free_parser_config(color->parser_config, line, \
 			"Error\nInvalid color value\n");
+	}
 }
 
 void	parse_color(t_color *color, char *line)
@@ -47,17 +50,20 @@ void	parse_color(t_color *color, char *line)
 		free_parser_config(color->parser_config, line, \
 			"Error\nMemory allocation failed for color\n");
 	if (split[0] == NULL || split[1] == NULL || split[2] == NULL)
+	{
+		safe_free_split(split);
 		free_parser_config(color->parser_config, line, \
 			"Error\nInvalid color format\n");
+	}
 	if (ft_strlen(split[0]) > 3 || ft_strlen(split[1]) > 3 || \
 		ft_strlen(split[2]) > 3)
+	{
+		safe_free_split(split);
 		free_parser_config(color->parser_config, line, \
 			"Error\nInvalid color format\n");
+	}
 	cast_colors(color, split, line);
-	i = -1;
-	while (split[++i])
-		free(split[i]);
-	free(split);
+	safe_free_split(split);
 }
 
 void	parse_texture_or_color(t_parser_config *parser_config, char *line)

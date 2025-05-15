@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_mandatory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:01:25 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 17:01:56 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 21:15:54 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ void	free_parser_map_config(t_map_parse *map_config)
 		free(map_config->map);
 	}
 	if (map_config->fd > 0)
+	{
+		parse_free_static_buff(map_config->fd);
 		close(map_config->fd);
+	}
 	map_config->fd = -1;
 	free(map_config);
 }

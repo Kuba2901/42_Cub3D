@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:53:18 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/11 21:43:48 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 21:10:50 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
+
+# define FD_MAX 1024
 
 typedef struct s_list
 {
@@ -75,5 +77,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_check_newline(const char	*st_buff);
 size_t	ft_index_newline(const char *st_buff);
 char	*get_next_line(int fd);
+char	*ft_join_buffs(char *st_buff, char *buffer);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 12:13:43 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:09:03 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,8 @@ static int	lifecycle_check_exit_condition(t_cube *cube)
 
 	player_loc = cube->entities->player->base->current_location;
 	exit_loc = cube->entities->exit->base->current_location;
-	if ((int)player_loc.x == (int)exit_loc.x
+	if (CUBE_BONUS
+		&& (int)player_loc.x == (int)exit_loc.x
 		&& (int)player_loc.y == (int)exit_loc.y)
 	{
 		cube->runtime_handler->display_credits = CUBE_TRUE;

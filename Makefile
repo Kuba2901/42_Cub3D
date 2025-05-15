@@ -108,7 +108,8 @@ SRC_COMMON := \
 	./src/parse/parse_map_utils.c \
 	./src/parse/check_map_utils.c \
 	./src/parse/realloc_map_utils.c \
-	./src/animations/animations.c
+	./src/animations/animations.c \
+	./src/parse/parse_utils.c
 
 # Mandatory-specific source files
 SRC_MANDATORY := \
@@ -123,7 +124,7 @@ SRC_BONUS := \
 	./src/parse/parse_texture_bonus.c \
 	./src/parse/parse_map_bonus.c \
 	./src/parse/parse_bonus.c \
-	./src/parse/init_bonus.c 
+	./src/parse/init_bonus.c
 
 # Object files for mandatory and bonus
 OBJS_COMMON := $(SRC_COMMON:.c=.o)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_mandatory.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:27:42 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 17:09:28 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 21:23:52 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,5 +109,8 @@ void			check_parsed_bonus_textures(t_parser_config *parser_config);
 // parse_bonus.c
 void			parse_bonus_line(t_parser_config *parser_config, char *line);
 void			parse(t_parser_config *parser_config);
+
+void			parse_free_static_buff(int fd);
+t_color			*parser_color_create(t_parser_config *parser_config);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:01:39 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 17:02:35 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 21:28:24 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,14 @@ void	init_bonus_parser_textures_paths(t_parser_config *parser_config)
 	if (!parser_config->textures_paths)
 		free_parser_config(parser_config, NULL, \
 			"Error\nMemory allocation failed for textures_config\n");
+	parser_config->ceiling_color = parser_color_create(parser_config);
+	if (!parser_config->ceiling_color)
+		free_parser_config(parser_config, NULL, \
+			"Error\nMemory allocation failed for ceiling_color\n");
+	parser_config->floor_color = parser_color_create(parser_config);
+	if (!parser_config->floor_color)
+		free_parser_config(parser_config, NULL, \
+			"Error\nMemory allocation failed for floor_color\n");
 	while (++i < TEXTURE_TYPES_COUNT)
 		parser_config->textures_paths[i] = NULL;
 }
@@ -54,6 +62,7 @@ t_parser_config	*init_parser_config(char *filename)
 			"Error\nMemory allocation failed for parser_config\n");
 	init_bonus_parser_map_config(parser_config, filename);
 	init_bonus_parser_textures_paths(parser_config);
+	
 	return (parser_config);
 }
 
@@ -69,7 +78,10 @@ void	free_bonus_parser_map_config(t_map_parse *map_config)
 		free(map_config->map);
 	}
 	if (map_config->fd > 0)
+	{
+		parse_free_static_buff(map_config->fd);
 		close(map_config->fd);
+	}
 	map_config->fd = -1;
 	free(map_config);
 }
@@ -93,6 +105,10 @@ void	free_parser_config(t_parser_config *parser_config, \
 		while (++i < TEXTURE_TYPES_COUNT)
 			free(parser_config->textures_paths[i]);
 		free(parser_config->textures_paths);
+		if (parser_config->ceiling_color)
+			free(parser_config->ceiling_color);
+		if (parser_config->floor_color)
+			free(parser_config->floor_color);
 	}
 	free(parser_config);
 	if (error)

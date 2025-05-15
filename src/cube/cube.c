@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/15 16:39:21 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 20:13:36 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,10 @@ t_cube	*cube_cube_init(int argc, char **argv)
 	cube->runtime_handler = runtime_runtime_handler_init();
 	cube->input_handler = input_handler_init();
 	cube->dda_data = dda_init();
-	cube->audio_system = audio_system_init();
+	// if (CUBE_BONUS)
+	// 	cube->audio_system = audio_system_init();
+	// else
+	cube->audio_system = NULL;
 	free_parser_config(parser_config, NULL, NULL);
 	return (cube);
 }

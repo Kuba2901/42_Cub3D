@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:34:32 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 16:43:43 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 21:16:02 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,4 @@ char	*replace_tabs(char *line)
 	new_line[++j] = '\0';
 	return (new_line);
 }
+

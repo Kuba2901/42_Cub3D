@@ -11,76 +11,12 @@
 #include <cube_drawing.h>
 #include <mlx.h>
 
-// char *map[] = {
-// 	"111111111111111111111111",
-// 	"100000000000000010000001",
-// 	"101000000000000000000001",
-// 	"101000000000000000000001",
-// 	"101000000000000010000001",
-// 	"101000011111111110111111",
-// 	"101000010101010110001111",
-// 	"101000010000000010000001",
-// 	"101000000000000000000001",
-// 	"101000010000000010000001",
-// 	"100000010000000010001111",
-// 	"100000011110111111111111",
-// 	"111111111110111111111111",
-// 	"100000000000000000000001",
-// 	"111111011110111111111111",
-// 	"111111011110111111111111",
-// 	"100000000011011000001001",
-// 	"100000000000110010001001",
-// 	"100000000011011000011011",
-// 	"101010000011000010X00001",
-// 	"100100000011011000011011",
-// 	"10101000001101101E0Q1001",
-// 	"100000000000X00000000001",
-// 	"111111111111111111111111"
-// };
-
-// char *map[] = {
-// 	"111111111111111111111111",
-// 	"100000000000000010000001",
-// 	"101000000000000000000001",
-// 	"101000000000000000000001",
-// 	"101000000000000010000001",
-// 	"101000011111111110111111",
-// 	"101000010101010110001111",
-// 	"101000010000000010000001",
-// 	"101000000000000000000001",
-// 	"101000010000000010000001",
-// 	"100000010000000010001111",
-// 	"100000011110111111111111",
-// 	"111111111110111111111111",
-// 	"100000000000000000000001",
-// 	"111111011110111111111111",
-// 	"111111011110111111111111",
-// 	"100000000011011000001001",
-// 	"100000000000110010001001",
-// 	"100000000011011000011011",
-// 	"101010000011000010X00001",
-// 	"100100000011011000011011",
-// 	"10101000001101101E0Q1001",
-// 	"100000000000X00000000001",
-// 	"111111111111111111111111"
-// };
-
-// const char *paths[] = {
-// 	"NO ./assets/textures/biohazard/xpm/environment/wall_north.xpm",
-// 	"SO ./assets/textures/biohazard/xpm/environment/wall_south.xpm",
-// 	"EA ./assets/textures/biohazard/xpm/environment/wall_east.xpm",
-// 	"WE ./assets/textures/biohazard/xpm/environment/wall_west.xpm",
-// 	"FL ./assets/textures/biohazard/xpm/environment/floor.xpm",
-// 	"CE ./assets/textures/biohazard/xpm/environment/ceiling.xpm",
-// 	"XX ./assets/textures/biohazard/xpm/enemies/enemy_0.xpm",
-// };
-
 int	main(int argc, char **argv)
 {
 	t_cube	*cube;
 
 	cube = cube_cube_init(argc, argv);
-	mlx_mouse_hide(cube->mlx_handler->mlx, cube->mlx_handler->mlx_win);
+	// mlx_mouse_hide(cube->mlx_handler->mlx, cube->mlx_handler->mlx_win);
 	mlx_hook(cube->mlx_handler->mlx_win, 2, 1L << 0, input_handler_key_press, cube);
 	mlx_hook(cube->mlx_handler->mlx_win, 3, 1L << 1, input_handler_key_release, cube);
 	mlx_hook(cube->mlx_handler->mlx_win, DestroyNotify,
@@ -90,3 +26,19 @@ int	main(int argc, char **argv)
 	mlx_loop(cube->mlx_handler->mlx);
 	return (EXIT_SUCCESS);
 }
+
+// #include <fcntl.h>
+// #include <libft.h>
+// #include <stdio.h>
+
+// int	main(void)
+// {
+// 	int fd = open("assets/maps/valid.cub", O_RDONLY);
+// 	char *line;
+// 	while ((line = get_next_line(fd)) != NULL)
+// 	{
+// 		printf("%s", line);
+// 		free(line);
+// 	}
+// 	close(fd);
+// }

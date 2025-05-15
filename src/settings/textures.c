@@ -27,10 +27,8 @@ t_tex_config	*settings_tex_config_init(char **paths,
 	tex_config->enemy_frames = settings_enemy_frames_init(mlx_handler);
 	tex_config->exit_idle_frames = settings_exit_idle_frames_init(mlx_handler);
 	tex_config->exit_open_frames = settings_exit_open_frames_init(mlx_handler);
-	if (ceil_color)
-		tex_config->ceiling_color = settings_color_init(ceil_color);
-	if (floor_color)
-		tex_config->floor_color = settings_color_init(floor_color);
+    tex_config->ceiling_color = settings_color_init(ceil_color);
+    tex_config->floor_color = settings_color_init(floor_color);
 	settings_tex_config_set_tex_all(tex_config, mlx_handler, paths);
 	return (tex_config);
 }
