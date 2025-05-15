@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:17:13 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/15 21:24:56 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:24:16 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@ void	parse_free_static_buff(int fd)
 {
     char	*line;    
     
-    if (fd > 0)
-    {
-        close(fd);
-    }
-    // Force get_next_line to clear its static buffer
-    line = get_next_line(-1);
-    free(line);
+    if (fd < 0)
+		return ;
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		free(line);
+		line = get_next_line(fd);
+	}
 }
 
 void	init_parser_color(t_parser_config *parser_config,

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:01:51 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/15 21:37:53 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:26:50 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ t_image_data	*mlx_img_image_data_init(t_mlx_handler *mlx_handler)
 	image_data->img = NULL;
 	image_data->addr = NULL;
 	image_data->bits_per_pixel = 0;
-	image_data->size_line = 0;
 	image_data->endian = 0;
 	return (image_data);
 }
@@ -34,12 +33,9 @@ t_image_data	*mlx_img_image_data_init(t_mlx_handler *mlx_handler)
 void	mlx_img_image_data_free(t_mlx_handler *mlx_handler,
 	t_image_data *image_data)
 {
-	if (mlx_handler && image_data)
-	{
-		if (image_data->img)
-			mlx_destroy_image(mlx_handler->mlx, image_data->img);
-		free(image_data);
-	}
+	if (image_data->img)
+		mlx_destroy_image(mlx_handler->mlx, image_data->img);
+	free(image_data);
 }
 
 t_mlx_handler	*mlx_mlx_handler_init( void )
@@ -59,9 +55,8 @@ t_mlx_handler	*mlx_mlx_handler_init( void )
 void	mlx_mlx_handler_free(t_mlx_handler *mlx_handler)
 {
 	mlx_img_image_data_free(mlx_handler, mlx_handler->mlx_img);
-	mlx_handler->mlx_img = NULL;
 	mlx_destroy_window(mlx_handler->mlx, mlx_handler->mlx_win);
 	mlx_destroy_display(mlx_handler->mlx);
-	safe_free(mlx_handler->mlx);
-	safe_free(mlx_handler);
+	free(mlx_handler->mlx);
+	free(mlx_handler);
 }
