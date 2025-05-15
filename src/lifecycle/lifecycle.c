@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/15 21:09:03 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:53:31 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ static int	lifecycle_check_exit_condition(t_cube *cube)
 		&& (int)player_loc.y == (int)exit_loc.y)
 	{
 		cube->runtime_handler->display_credits = CUBE_TRUE;
-		cube_cube_free(cube);
+		mlx_loop_end(cube->mlx_handler->mlx);
 		return (1);
 	}
 	if (!cube->runtime_handler->running)
 	{
-		cube_cube_free(cube);
+		mlx_loop_end(cube->mlx_handler->mlx);
 		return (1);
 	}
 	return (0);

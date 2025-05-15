@@ -24,21 +24,6 @@ int	main(int argc, char **argv)
 	mlx_hook(cube->mlx_handler->mlx_win, 6, 1L << 6, input_handler_mouse_movement, cube);
 	mlx_loop_hook(cube->mlx_handler->mlx, lifecycle_game_loop, cube);
 	mlx_loop(cube->mlx_handler->mlx);
+	cube_cube_free(cube);
 	return (EXIT_SUCCESS);
 }
-
-// #include <fcntl.h>
-// #include <libft.h>
-// #include <stdio.h>
-
-// int	main(void)
-// {
-// 	int fd = open("assets/maps/valid.cub", O_RDONLY);
-// 	char *line;
-// 	while ((line = get_next_line(fd)) != NULL)
-// 	{
-// 		printf("%s", line);
-// 		free(line);
-// 	}
-// 	close(fd);
-// }
