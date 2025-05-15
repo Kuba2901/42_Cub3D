@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   free_mandatory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:01:25 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:01:56 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
-# include <parse_map_utils.h>
+#include <parse_map_utils.h>
 
 void	free_parser_map_config(t_map_parse *map_config)
 {
@@ -53,8 +53,6 @@ void	free_parser_config(t_parser_config *parser_config, char *line, \
 	safe_free(line);
 	if (!parser_config)
 		return ;
-	if (error)
-		parser_config->map_config->height -= 1;
 	if (parser_config->map_config)
 		free_parser_map_config(parser_config->map_config);
 	if (parser_config->textures_paths || \

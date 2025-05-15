@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   init_mandatory.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 11:46:26 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:41:14 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
-# include <parse_map_utils.h>
+#include <parse_map_utils.h>
 
 void	init_parser_map_config(t_parser_config *parser_config, char *filename)
 {

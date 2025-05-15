@@ -106,6 +106,8 @@ SRC_COMMON := \
 	./src/audio/audio_controls.c \
 	./src/animations/animations_animation_controller.c \
 	./src/parse/parse_map_utils.c \
+	./src/parse/check_map_utils.c \
+	./src/parse/realloc_map_utils.c \
 	./src/animations/animations.c
 
 # Mandatory-specific source files

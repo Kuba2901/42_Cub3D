@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:08:25 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 19:17:57 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/14 19:59:19 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@
 static void	ft_alloc(char **arr, char const *s, char c)
 {
 	char		**tmp_arr;
-	char const	*tmp;
+	char const	*tmp_str;
 
-	tmp = s;
+	tmp_str = s;
 	tmp_arr = arr;
-	while (*tmp)
+	while (*tmp_str)
 	{
 		while (*s == c)
 			++s;
-		tmp = s;
-		while (*tmp && *tmp != c)
-			++tmp;
-		if (*tmp == c || tmp > s)
+		tmp_str = s;
+		while (*tmp_str && *tmp_str != c)
+			++tmp_str;
+		if (*tmp_str == c || tmp_str > s)
 		{
-			*tmp_arr = ft_substr(s, 0, tmp - s);
-			s = tmp;
+			*tmp_arr = ft_substr(s, 0, tmp_str - s);
+			s = tmp_str;
 			++tmp_arr;
 		}
 	}
@@ -58,13 +58,13 @@ static int	ft_count_words(char const *s, char c)
 
 char	**ft_split(char const *s, char c)
 {
-	char	**arr;
+	char	**ret;
 
 	if (!s)
 		return (NULL);
-	arr = (char **)malloc(sizeof(char *) * (ft_count_words(s, c) + 1));
-	if (!arr)
+	ret = (char **)malloc(sizeof(s) * (ft_count_words(s, c) + 1));
+	if (!ret)
 		return (NULL);
-	ft_alloc(arr, s, c);
-	return (arr);
+	ft_alloc(ret, s, c);
+	return (ret);
 }

@@ -6,23 +6,34 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:38:08 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/13 15:16:08 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 17:10:17 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAP_UTILS_H
-# define MAP_UTILS_H
+#ifndef PARSE_MAP_UTILS_H
+# define PARSE_MAP_UTILS_H
 
 # define TAB_WIDTH 4
 
-#include <stdio.h>
-#include <libft.h>
+# include <stdio.h>
+# include <libft.h>
+
+typedef struct s_parser_config	t_parser_config;
 
 // parse_map_utils.h
 int		get_new_line_lenght(char *line);
 void	put_spaces(char *new_line, int *j);
 char	*replace_tabs(char *line);
-char	**realloc_map(char **map, size_t new_size);
 
+// check_map_utils.c
+void	check_starting_pos_map(t_parser_config *parser_config);
+int		is_neighbour(char **map, int i, int j, char elem);
+void	check_map_walls(t_parser_config *parser_config);
+
+// realloc_map_utils.c
+char	**realloc_map(char **map, size_t new_size);
+void	free_new_map(t_parser_config *parser_config, char **new_map, int i);
+void	copy_and_pad_map_line(char *new_line, char *src_line, size_t width);
+void	realloc_map_with_max_width(t_parser_config *parser_config);
 
 #endif

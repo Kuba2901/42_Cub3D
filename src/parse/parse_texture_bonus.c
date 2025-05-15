@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:35:16 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 19:36:48 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 17:02:10 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
-# include <parse_map_utils.h>
+#include <parse_map_utils.h>
 
 void	parse_and_check_bonus_texture(t_parser_config *parser_config, \
 	t_tex_type tex_type, char *line)

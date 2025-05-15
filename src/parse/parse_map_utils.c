@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:34:32 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/14 14:50:32 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/05/15 16:43:43 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,19 +63,4 @@ char	*replace_tabs(char *line)
 	}
 	new_line[++j] = '\0';
 	return (new_line);
-}
-
-char	**realloc_map(char **map, size_t new_size)
-{
-	char	**new_map;
-	size_t	i;
-
-	i = -1;
-	new_map = (char **)malloc(sizeof(char *) * new_size);
-	if (!new_map)
-		return (NULL);
-	while (++i < new_size - 1)
-		new_map[i] = map[i];
-	free(map);
-	return (new_map);
 }

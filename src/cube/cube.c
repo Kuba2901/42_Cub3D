@@ -3,18 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   cube.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/14 19:14:22 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 16:39:21 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#if CUBE_BONUS
-# include <parse_bonus.h>
-#else
-# include <parse_mandatory.h>
-#endif
 #include <cube.h>
 #include <cube_settings_args.h>
 #include <cube_settings.h>
@@ -27,6 +22,8 @@
 #include <stdio.h>
 #include <cube_drawing.h>
 #include <cube_audio_integration.h>
+#include <parse_mandatory.h>
+#include <parse_map_utils.h>
 
 t_cube	*cube_cube_init(int argc, char **argv)
 {
