@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:01:39 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 21:28:24 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/15 23:00:16 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,6 @@ void	free_parser_config(t_parser_config *parser_config, \
 	safe_free(line);
 	if (!parser_config)
 		return ;
-	if (error)
-		parser_config->map_config->height -= 1;
 	if (parser_config->map_config)
 		free_bonus_parser_map_config(parser_config->map_config);
 	if (parser_config->textures_paths)
