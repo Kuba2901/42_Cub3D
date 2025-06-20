@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:17:13 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/15 22:24:16 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:55:04 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	parse_free_static_buff(int fd)
 {
-    char	*line;    
-    
-    if (fd < 0)
+	char	*line;
+
+	if (fd < 0)
 		return ;
 	line = get_next_line(fd);
 	while (line != NULL)
