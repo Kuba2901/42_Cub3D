@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 12:01:39 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 23:24:26 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/20 16:58:05 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ t_parser_config	*init_parser_config(char *filename)
 	parser_config->ceiling_color = NULL;
 	init_bonus_parser_map_config(parser_config, filename);
 	init_bonus_parser_textures_paths(parser_config);
-	
 	return (parser_config);
 }
 
@@ -104,7 +103,6 @@ void	free_parser_config(t_parser_config *parser_config, \
 		free_bonus_parser_map_config(parser_config->map_config);
 	if (parser_config->textures_paths)
 	{
-		i = -1;
 		while (++i < TEXTURE_TYPES_COUNT)
 			free(parser_config->textures_paths[i]);
 		free(parser_config->textures_paths);
