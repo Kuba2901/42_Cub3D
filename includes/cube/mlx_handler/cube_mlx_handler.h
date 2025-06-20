@@ -41,6 +41,6 @@ typedef struct s_mlx_handler
 }	t_mlx_handler;
 
 t_mlx_handler	*mlx_mlx_handler_init( void );
-void			mlx_mlx_handler_free(t_mlx_handler *mlx_handler);
+void			mlx_mlx_handler_free(t_mlx_handler **mlx_handler);
 
 #endif

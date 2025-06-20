@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/15 20:13:36 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:32:39 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ void	cube_cube_free(t_cube *cube)
 	settings_cube_free(cube->cube_settings);
 	if (cube->audio_system)
 		audio_system_shutdown(cube->audio_system);
-	mlx_mlx_handler_free(cube->mlx_handler);
+	mlx_mlx_handler_free(&cube->mlx_handler);
 	runtime_runtime_handler_free(cube->runtime_handler);
 	dda_free(cube->dda_data);
 	safe_free(cube);

@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:17:28 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/20 16:37:34 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,13 @@ int	credits_put_centered_text(t_cube *cube, int y, int color, char *string)
 			cube->mlx_handler->mlx_win, x, y, color, string));
 }
 
-static void	credits_render_black_screen(t_cube *cube)
+static void	credits_fill_screen_black(t_cube *cube)
 {
 	t_mlx_handler	*mlx_handler;
 	int				y;
 	int				x;
 
 	mlx_handler = cube->mlx_handler;
-	draw_render_clear_screen(cube);
 	y = -1;
 	while (++y < WINDOW_HEIGHT)
 	{
@@ -51,35 +50,46 @@ static void	credits_render_black_screen(t_cube *cube)
 		while (++x < WINDOW_WIDTH)
 			draw_my_mlx_pixel_put(mlx_handler->mlx_img, x, y, DRAW_BLACK_COLOR);
 	}
+}
+
+static void	credits_render_black_screen(t_cube *cube)
+{
+	draw_render_clear_screen(cube);
+	credits_fill_screen_black(cube);
 	mlx_put_image_to_window(cube->mlx_handler->mlx,
 		cube->mlx_handler->mlx_win, cube->mlx_handler->mlx_img->img, 0, 0);
+}
+
+static void	credits_render_frame(t_cube *cube, char **lines, int y_pos)
+{
+	int	i;
+	int	current_y;
+
+	credits_render_black_screen(cube);
+	i = 0;
+	current_y = y_pos;
+	while (lines[i])
+	{
+		credits_put_centered_text(cube, current_y, DRAW_WHITE_COLOR, lines[i]);
+		current_y += CREDITS_LINE_HEIGHT;
+		i++;
+	}
+	mlx_do_sync(cube->mlx_handler->mlx);
+	usleep(30000);
 }
 
 void	credits_display(t_cube *cube)
 {
 	int		y_pos;
 	char	**lines;
-	int		i;
-	int		current_y;
 
 	cube->runtime_handler->displaying_credits = CUBE_TRUE;
 	lines = credits_lines_load();
 	y_pos = WINDOW_HEIGHT;
 	while (y_pos + (CREDITS_LINE_HEIGHT * 2) > 0)
 	{
-		credits_render_black_screen(cube);
-		i = 0;
-		current_y = y_pos;
-		while (lines[i])
-		{
-			credits_put_centered_text(cube, current_y,
-				DRAW_WHITE_COLOR, lines[i]);
-			current_y += CREDITS_LINE_HEIGHT;
-			i++;
-		}
+		credits_render_frame(cube, lines, y_pos);
 		y_pos -= 2;
-		mlx_do_sync(cube->mlx_handler->mlx);
-		usleep(30000);
 	}
 	cube->runtime_handler->displaying_credits = CUBE_FALSE;
 	credits_lines_free(lines);
