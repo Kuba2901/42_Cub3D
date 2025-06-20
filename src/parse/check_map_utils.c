@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 00:33:32 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 16:46:30 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/20 15:49:09 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ int	is_neighbour(char **map, int i, int j, char elem)
 	if (map[i - 1][j] == elem || map[i + 1][j] == elem || \
 		map[i][j - 1] == elem || map[i][j + 1] == elem)
 	{
-		printf("i: %d, j: %d\n", i, j);
 		return (1);
 	}
 	return (0);
@@ -75,4 +74,19 @@ void	check_map_walls(t_parser_config *parser_config)
 			}
 		}
 	}
+}
+
+int	check_exit(t_parser_config *parser_config)
+{
+	int	i;
+
+	i = -1;
+	while (++i < (int)parser_config->map_config->height)
+	{
+		if (ft_strchr(parser_config->map_config->map[i], 'Q'))
+			return (1);
+	}
+	free_parser_config(parser_config, NULL, \
+		"Error\nExit not found in the map.\n");
+	return (0);
 }

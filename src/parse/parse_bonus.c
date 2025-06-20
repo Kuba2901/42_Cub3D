@@ -6,7 +6,7 @@
 /*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:48:44 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 17:01:44 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/20 15:49:50 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void	parse(t_parser_config *parser_config)
 	check_parsed_bonus_textures(parser_config);
 	check_starting_pos_map(parser_config);
 	check_map_walls(parser_config);
+	check_exit(parser_config);
 }

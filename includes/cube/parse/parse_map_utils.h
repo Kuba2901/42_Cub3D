@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_utils.h                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:38:08 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 21:15:32 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/20 15:48:25 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	*replace_tabs(char *line);
 void	check_starting_pos_map(t_parser_config *parser_config);
 int		is_neighbour(char **map, int i, int j, char elem);
 void	check_map_walls(t_parser_config *parser_config);
+int		check_exit(t_parser_config *parser_config);
 
 // realloc_map_utils.c
 char	**realloc_map(char **map, size_t new_size);
