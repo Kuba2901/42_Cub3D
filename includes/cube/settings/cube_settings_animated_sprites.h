@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:13:32 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/06/23 18:14:11 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 21:44:56 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@
 # define A_E_F_C 7
 
 // Exit
+# define A_EX_I_F_0 "./assets/textures/biohazard/xpm/exit/exit_0.xpm"
 # define A_E_O_F_0 "./assets/textures/biohazard/xpm/exit/open/exit_0.xpm"
 # define A_E_O_F_1 "./assets/textures/biohazard/xpm/exit/open/exit_1.xpm"
 # define A_E_O_F_2 "./assets/textures/biohazard/xpm/exit/open/exit_2.xpm"
 # define A_E_O_F_3 "./assets/textures/biohazard/xpm/exit/open/exit_3.xpm"
 # define A_E_O_F_4 "./assets/textures/biohazard/xpm/exit/open/exit_4.xpm"
 # define A_E_O_F_5 "./assets/textures/biohazard/xpm/exit/open/exit_5.xpm"
-
 # define A_E_I_F_C 1
 # define A_E_O_F_C 6
 

@@ -9,6 +9,13 @@
             "problemMatcher": []
         },
         {
+            "label": "make bonus",
+            "type": "shell",
+            "command": "make bonus",
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
             "type": "cppbuild",
             "label": "C/C++: clang build active file",
             "command": "/usr/bin/clang",

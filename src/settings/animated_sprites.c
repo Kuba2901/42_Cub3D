@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 17:28:59 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/06/23 17:36:04 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 21:46:03 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,6 @@ t_animated_frames	*settings_exit_idle_frames_init(t_mlx_handler *mlx_handler)
 		safe_free(exit_frames);
 		return (NULL);
 	}
-	exit_frames->frames[0] = settings_tex_get_texels(A_E_I_F_0, mlx_handler);
+	exit_frames->frames[0] = settings_tex_get_texels(A_EX_I_F_0, mlx_handler);
 	return (exit_frames);
 }

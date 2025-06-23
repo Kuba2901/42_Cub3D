@@ -2,7 +2,7 @@
 	"version": "0.2.0",
 	"configurations": [
 	  {
-		"name": "Debug C with LLDB + Make",
+		"name": "Mandatory",
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/CUB3D",
@@ -13,6 +13,19 @@
 		"externalConsole": false,
 		"MIMode": "lldb",
 		"preLaunchTask": "make"
+	  },
+	  {
+		"name": "Bonus",
+		"type": "cppdbg",
+		"request": "launch",
+		"program": "${workspaceFolder}/CUB3D",
+		"args": ["config_maps/config1.cub"],
+		"stopAtEntry": false,
+		"cwd": "${workspaceFolder}",
+		"environment": [],
+		"externalConsole": false,
+		"MIMode": "lldb",
+		"preLaunchTask": "make bonus"
 	  }
 	]
   }
