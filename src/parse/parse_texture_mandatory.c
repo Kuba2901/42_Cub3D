@@ -6,19 +6,19 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:29:31 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 20:08:55 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:47:20 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
 #include <parse_map_utils.h>
 
-void	parse_texture(t_parser_config *parser_config, \
+void	parse_texture(t_parser_config *parser_config,
 						t_tex_type_mandatory tex_type, char *line)
 {
 	parser_config->textures_paths[tex_type] = ft_strdup(line);
 	if (!parser_config->textures_paths[tex_type])
-		free_parser_config(parser_config, line, \
+		free_parser_config(parser_config, line,
 			"Error\nMemory allocation failed for texture path\n");
 }
 
@@ -27,12 +27,12 @@ void	cast_colors(t_color *color, char **split, char *line)
 	color->r = ft_atoi(split[0]);
 	color->g = ft_atoi(split[1]);
 	color->b = ft_atoi(split[2]);
-	if (color->r < 0 || color->r > 255 || \
-		color->g < 0 || color->g > 255 || \
-		color->b < 0 || color->b > 255)
+	if (color->r < 0 || color->r > 255
+		|| color->g < 0 || color->g > 255
+		|| color->b < 0 || color->b > 255)
 	{
 		safe_free_split(split);
-		free_parser_config(color->parser_config, line, \
+		free_parser_config(color->parser_config, line,
 			"Error\nInvalid color value\n");
 	}
 }
@@ -47,19 +47,19 @@ void	parse_color(t_color *color, char *line)
 		i++;
 	split = ft_split(line + i, ',');
 	if (!split)
-		free_parser_config(color->parser_config, line, \
+		free_parser_config(color->parser_config, line,
 			"Error\nMemory allocation failed for color\n");
 	if (split[0] == NULL || split[1] == NULL || split[2] == NULL)
 	{
 		safe_free_split(split);
-		free_parser_config(color->parser_config, line, \
+		free_parser_config(color->parser_config, line,
 			"Error\nInvalid color format\n");
 	}
-	if (ft_strlen(split[0]) > 3 || ft_strlen(split[1]) > 3 || \
-		ft_strlen(split[2]) > 3)
+	if (ft_strlen(split[0]) > 3 || ft_strlen(split[1]) > 3
+		|| ft_strlen(split[2]) > 3)
 	{
 		safe_free_split(split);
-		free_parser_config(color->parser_config, line, \
+		free_parser_config(color->parser_config, line,
 			"Error\nInvalid color format\n");
 	}
 	cast_colors(color, split, line);
@@ -84,7 +84,7 @@ void	parse_texture_or_color(t_parser_config *parser_config, char *line)
 	else if (ft_strncmp(line, "C", 1) == 0)
 		parse_color(parser_config->ceiling_color, line);
 	else
-		free_parser_config(parser_config, line, \
+		free_parser_config(parser_config, line,
 			"Error\nInvalid texture line\n");
 }
 
@@ -96,7 +96,7 @@ void	check_parsed_mandatory_textures(t_parser_config *parser_config)
 	while (++i < TEXTURE_TYPES_COUNT_MANDATORY)
 	{
 		if (parser_config->textures_paths[i] == NULL)
-			free_parser_config(parser_config, NULL, \
+			free_parser_config(parser_config, NULL,
 				"Error\nMissing texture path\n");
 	}
 }

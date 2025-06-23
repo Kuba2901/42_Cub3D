@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 17:02:31 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/11 15:16:18 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:06:52 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include <cube_settings_args.h>
+#include <cube_settings_args.h>
 
 /*
 ** check_extension - Check if the file has a .cub extension

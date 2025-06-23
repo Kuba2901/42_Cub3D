@@ -1,6 +1,20 @@
-#include <cube_settings.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   settings.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/23 17:42:36 by jnenczak          #+#    #+#             */
+/*   Updated: 2025/06/23 18:01:07 by jnenczak         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_cube_settings	*settings_cube_init(t_map_config *map_config, t_tex_config *tex_config)
+#include <cube_settings.h>
+#include <cube_settings_textures.h>
+
+t_cube_settings	*settings_cube_init(
+	t_map_config *map_config, t_tex_config *tex_config)
 {
 	t_cube_settings	*cube_settings;
 	t_bool			valid;

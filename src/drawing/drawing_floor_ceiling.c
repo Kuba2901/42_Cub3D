@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/14 19:25:27 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:05:34 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,18 @@ static unsigned int	get_color_from_rgb(t_tex_color color)
 	return ((color.r << 16) | (color.g << 8) | color.b);
 }
 
+static void	draw_set_iter_data(t_draw_horizontal_data *dhd)
+{
+	dhd->cell_x = (int)(dhd->floor_x);
+	dhd->cell_y = (int)(dhd->floor_y);
+	dhd->texture_x = (int)(TEXTURE_SIZE
+			* (dhd->floor_x - dhd->cell_x)) & (TEXTURE_SIZE - 1);
+	dhd->texture_y = (int)(TEXTURE_SIZE
+			* (dhd->floor_y - dhd->cell_y)) & (TEXTURE_SIZE - 1);
+	dhd->floor_x += dhd->floor_step_x;
+	dhd->floor_y += dhd->floor_step_y;
+}
+
 static void	draw_render_floor(t_cube *cube, t_draw_horizontal_data *dhd, int y)
 {
 	int			x;
@@ -40,14 +52,7 @@ static void	draw_render_floor(t_cube *cube, t_draw_horizontal_data *dhd, int y)
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
-		dhd->cell_x = (int)(dhd->floor_x);
-		dhd->cell_y = (int)(dhd->floor_y);
-		dhd->texture_x = (int)(TEXTURE_SIZE
-				* (dhd->floor_x - dhd->cell_x)) & (TEXTURE_SIZE - 1);
-		dhd->texture_y = (int)(TEXTURE_SIZE
-				* (dhd->floor_y - dhd->cell_y)) & (TEXTURE_SIZE - 1);
-		dhd->floor_x += dhd->floor_step_x;
-		dhd->floor_y += dhd->floor_step_y;
+		draw_set_iter_data(dhd);
 		if (!CUBE_BONUS)
 			dhd->color = get_color_from_rgb(color);
 		else
@@ -70,14 +75,7 @@ static void	draw_render_ceiling(t_cube *cube,
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
-		dhd->cell_x = (int)(dhd->floor_x);
-		dhd->cell_y = (int)(dhd->floor_y);
-		dhd->texture_x = (int)(TEXTURE_SIZE
-				* (dhd->floor_x - dhd->cell_x)) & (TEXTURE_SIZE - 1);
-		dhd->texture_y = (int)(TEXTURE_SIZE
-				* (dhd->floor_y - dhd->cell_y)) & (TEXTURE_SIZE - 1);
-		dhd->floor_x += dhd->floor_step_x;
-		dhd->floor_y += dhd->floor_step_y;
+		draw_set_iter_data(dhd);
 		if (!CUBE_BONUS)
 			dhd->color = get_color_from_rgb(color);
 		else

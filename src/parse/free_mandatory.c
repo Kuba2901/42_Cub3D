@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 12:01:25 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 21:15:54 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:45:19 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	free_parser_textures_and_colors(t_parser_config *parser_config)
 		free(parser_config->floor_color);
 }
 
-void	free_parser_config(t_parser_config *parser_config, char *line, \
+void	free_parser_config(t_parser_config *parser_config, char *line,
 	char *error)
 {
 	safe_free(line);
@@ -58,9 +58,9 @@ void	free_parser_config(t_parser_config *parser_config, char *line, \
 		return ;
 	if (parser_config->map_config)
 		free_parser_map_config(parser_config->map_config);
-	if (parser_config->textures_paths || \
-		parser_config->floor_color || \
-		parser_config->ceiling_color)
+	if (parser_config->textures_paths
+		|| parser_config->floor_color
+		|| parser_config->ceiling_color)
 		free_parser_textures_and_colors(parser_config);
 	free(parser_config);
 	if (error)

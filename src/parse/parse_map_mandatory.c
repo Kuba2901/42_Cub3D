@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_map_mandatory.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:26:28 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 16:41:56 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:48:28 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int	is_map_line(char *line)
 	valid_char = 0;
 	while (line[++i])
 	{
-		if (line[i] != '1' && line[i] != '0' && \
-			line[i] != ' ' && line[i] != '\t' && \
-			line[i] != 'N' && line[i] != 'S' && \
-			line[i] != 'E' && line[i] != 'W')
+		if (line[i] != '1' && line[i] != '0'
+			&& line[i] != ' ' && line[i] != '\t'
+			&& line[i] != 'N' && line[i] != 'S'
+			&& line[i] != 'E' && line[i] != 'W')
 		{
 			if ((line[i] == '\n' || line[i] == '\0') && valid_char == 1)
 				continue ;
@@ -44,18 +44,18 @@ void	parse_map_line(t_parser_config *pc, char *line)
 		pc->map_config->parsing_map = 1;
 		pc->map_config->height = 0;
 	}
-	pc->map_config->map = realloc_map(pc->map_config->map, \
-		pc->map_config->height + 1);
+	pc->map_config->map = realloc_map(pc->map_config->map,
+			pc->map_config->height + 1);
 	if (!pc->map_config->map)
-		free_parser_config(pc, line, \
+		free_parser_config(pc, line,
 			"Error\nMemory allocation failed for new_map\n");
 	pc->map_config->height++;
 	pc->map_config->map[pc->map_config->height - 1] = replace_tabs(line);
 	if (!pc->map_config->map[pc->map_config->height - 1])
-		free_parser_config(pc, line, \
+		free_parser_config(pc, line,
 			"Error\nMemory allocation failed for new_line\n");
-	if (pc->map_config->width < \
-		ft_strlen(pc->map_config->map[pc->map_config->height - 1]))
-		pc->map_config->width \
+	if (pc->map_config->width
+		< ft_strlen(pc->map_config->map[pc->map_config->height - 1]))
+		pc->map_config->width
 			= ft_strlen(pc->map_config->map[pc->map_config->height - 1]);
 }

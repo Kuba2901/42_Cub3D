@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:27:42 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 21:23:52 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 18:12:35 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ typedef enum s_tex_type_mandatory
 
 // free_mandatory.c
 void			free_parser_textures_and_colors(t_parser_config *parser_config);
-void			free_parser_config(t_parser_config *parser_config, char *line, \
-									char *error);
+void			free_parser_config(t_parser_config *parser_config, char *line,
+					char *error);
 void			free_parser_map_config(t_map_parse *map_config);
 
 // init_mandatory.c
-void			init_parser_map_config(t_parser_config *parser_config, \
-										char *filename);
+void			init_parser_map_config(t_parser_config *parser_config,
+					char *filename);
 void			init_parser_textures_and_colors(t_parser_config *parser_config);
 t_parser_config	*init_parser_config(char *filename);
 
@@ -72,12 +72,12 @@ int				is_map_line(char *line);
 void			parse_map_line(t_parser_config *parser_config, char *line);
 
 // parse_mandatory_texture.c
-void			parse_texture(t_parser_config *parser_config, \
-								t_tex_type_mandatory tex_type, char *line);
+void			parse_texture(t_parser_config *parser_config,
+					t_tex_type_mandatory tex_type, char *line);
 void			cast_colors(t_color *color, char **split, char *line);
 void			parse_color(t_color *color, char *line);
-void			parse_texture_or_color(t_parser_config *parser_config, \
-										char *line);
+void			parse_texture_or_color(t_parser_config *parser_config,
+					char *line);
 void			check_parsed_mandatory_textures(t_parser_config *parser_config);
 
 // parse_mandatory.c
@@ -86,23 +86,23 @@ void			parse(t_parser_config *parser_config);
 
 // BONUS
 // init_bonus.c
-void			init_bonus_parser_textures_paths(t_parser_config \
-													*parser_config);
-void			init_bonus_parser_map_config(t_parser_config \
-												*parser_config, char *filename);
+void			init_bonus_parser_textures_paths(
+					t_parser_config *parser_config);
+void			init_bonus_parser_map_config(
+					t_parser_config *parser_config, char *filename);
 t_parser_config	*init_parser_config(char *filename);
 void			free_bonus_parser_map_config(t_map_parse *map_config);
-void			free_parser_config(t_parser_config *parser_config, \
-									char *line, char *error);
+void			free_parser_config(t_parser_config *parser_config,
+					char *line, char *error);
 
 // parse_bonus_map.c
 int				is_bonus_map_line(char *line);
-void			parse_bonus_map_line(t_parser_config *parser_config, \
-										char *line);
+void			parse_bonus_map_line(t_parser_config *parser_config,
+					char *line);
 
 // parse_bonus_texture.c
-void			parse_and_check_bonus_texture(t_parser_config *parser_config, \
-										t_tex_type texture_type, char *line);
+void			parse_and_check_bonus_texture(t_parser_config *parser_config,
+					t_tex_type texture_type, char *line);
 void			parse_bonus_texture(t_parser_config *parser_config, char *line);
 void			check_parsed_bonus_textures(t_parser_config *parser_config);
 

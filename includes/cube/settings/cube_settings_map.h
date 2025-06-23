@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube_settings_map.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 16:41:08 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/09 16:41:10 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/23 18:14:23 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <cube_map.h>
 
-typedef struct	s_map_config
+typedef struct s_map_config
 {
 	int		width;
 	int		height;
@@ -32,5 +32,7 @@ typedef struct	s_map_config
 
 t_map_config	*settings_map_config_init(char **map, int width, int height);
 void			settings_map_config_free(t_map_config *map_config);
+void			settings_map_config_extract_basic_information(
+					t_map_config *map_config);
 
 #endif

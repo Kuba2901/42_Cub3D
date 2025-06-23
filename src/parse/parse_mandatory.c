@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 17:27:02 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 21:15:46 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:46:35 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	parse_line(t_parser_config *parser_config, char *line)
 	else if (!parser_config->map_config->parsing_map)
 		parse_texture_or_color(parser_config, line);
 	else
-		free_parser_config(parser_config, line, \
+		free_parser_config(parser_config, line,
 			"Error\nInvalid line after map parsing has started\n");
 }
 
@@ -36,7 +36,7 @@ void	parse(t_parser_config *parser_config)
 		if (line[0] == '\n' || line[0] == '\0')
 		{
 			if (parser_config->map_config->parsing_map == 1)
-				free_parser_config(parser_config, line, \
+				free_parser_config(parser_config, line,
 					"Error\nEmpty line after map parsing has started\n");
 			free(line);
 			line = get_next_line(parser_config->map_config->fd);

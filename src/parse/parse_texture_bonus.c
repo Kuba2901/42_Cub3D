@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:35:16 by gromiti           #+#    #+#             */
-/*   Updated: 2025/05/15 17:02:10 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:46:48 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <parse_mandatory.h>
 #include <parse_map_utils.h>
 
-void	parse_and_check_bonus_texture(t_parser_config *parser_config, \
+void	parse_and_check_bonus_texture(t_parser_config *parser_config,
 	t_tex_type tex_type, char *line)
 {
 	parser_config->textures_paths[tex_type] = ft_strdup(line);
 	if (!parser_config->textures_paths[tex_type])
-		free_parser_config(parser_config, line, \
+		free_parser_config(parser_config, line,
 			"Error\nMemory allocation failed for texture path\n");
 }
 
@@ -40,7 +40,7 @@ void	parse_bonus_texture(t_parser_config *parser_config, char *line)
 	else if (ft_strncmp(line, "CE", 2) == 0)
 		parse_and_check_bonus_texture(parser_config, TEX_TYPE_CEILING, line);
 	else
-		free_parser_config(parser_config, line, \
+		free_parser_config(parser_config, line,
 			"Error\nInvalid texture line\n");
 }
 
@@ -52,7 +52,7 @@ void	check_parsed_bonus_textures(t_parser_config *parser_config)
 	while (++i < TEXTURE_TYPES_COUNT)
 	{
 		if (parser_config->textures_paths[i] == NULL)
-			free_parser_config(parser_config, NULL, \
+			free_parser_config(parser_config, NULL,
 				"Error\nMissing texture path\n");
 	}
 }

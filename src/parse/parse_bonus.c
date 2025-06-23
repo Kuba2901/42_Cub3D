@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 19:48:44 by gromiti           #+#    #+#             */
-/*   Updated: 2025/06/20 15:49:50 by gromiti          ###   ########.fr       */
+/*   Updated: 2025/06/23 17:46:22 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	parse_bonus_line(t_parser_config *parser_config, char *line)
 	else if (!parser_config->map_config->parsing_map)
 		parse_bonus_texture(parser_config, line);
 	else
-		free_parser_config(parser_config, line, \
+		free_parser_config(parser_config, line,
 			"Error\nInvalid line after map started\n");
 }
 
@@ -36,7 +36,7 @@ void	parse(t_parser_config *parser_config)
 		if (line[0] == '\n' || line[0] == '\0')
 		{
 			if (parser_config->map_config->parsing_map == 1)
-				free_parser_config(parser_config, line, \
+				free_parser_config(parser_config, line,
 					"Error\nEmpty line after map parsing has started\n");
 			free(line);
 			line = get_next_line(parser_config->map_config->fd);

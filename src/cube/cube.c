@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 20:50:58 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/06/20 16:32:39 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:00:52 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,47 +25,58 @@
 #include <parse_mandatory.h>
 #include <parse_map_utils.h>
 
-t_cube	*cube_cube_init(int argc, char **argv)
+static t_parser_config	*setup_parser(int argc, char **argv)
 {
-	t_cube			*cube;
 	t_parser_config	*parser_config;
 
-	printf("0... Checking program arguments\n");
 	check_args(argc, argv);
-
 	parser_config = init_parser_config(argv[1]);
 	if (!parser_config)
 	{
 		printf("Error\nFailed to initialize parser_config\n");
 		exit(EXIT_FAILURE);
 	}
-	printf("1... Initialized parser_config\n");
-
 	parse(parser_config);
-	printf("2... Parsing completed\n");
+	return (parser_config);
+}
 
-	cube = malloc(sizeof(t_cube));
-	if (!cube)
-		return (NULL);
+static void	setup_cube_components(t_cube *cube, t_parser_config *parser_config)
+{
 	cube->mlx_handler = mlx_mlx_handler_init();
-	printf("2... Initialized mlx_handler\n");
-
-	cube->cube_settings = settings_cube_init(settings_map_config_init(parser_config->map_config->map,
-			parser_config->map_config->width, parser_config->map_config->height),
-	settings_tex_config_init(parser_config->textures_paths, cube->mlx_handler, parser_config->ceiling_color, parser_config->floor_color));
-	printf("3... Initialized cube_settings\n");
-	
-	cube->entities = entities_entities_init(entities_entities_config_init(cube->cube_settings));
-	printf("4... Initialized entities\n");
-	
+	cube->cube_settings = settings_cube_init(
+			settings_map_config_init(parser_config->map_config->map,
+				parser_config->map_config->width,
+				parser_config->map_config->height),
+			settings_tex_config_init(parser_config->textures_paths,
+				cube->mlx_handler, parser_config->ceiling_color,
+				parser_config->floor_color));
+	cube->entities = entities_entities_init(
+			entities_entities_config_init(cube->cube_settings));
 	cube->map = map_map_init(cube->cube_settings->map_config);
 	cube->runtime_handler = runtime_runtime_handler_init();
 	cube->input_handler = input_handler_init();
 	cube->dda_data = dda_init();
-	// if (CUBE_BONUS)
-	// 	cube->audio_system = audio_system_init();
-	// else
-	cube->audio_system = NULL;
+}
+
+static void	setup_audio(t_cube *cube)
+{
+	if (CUBE_BONUS)
+		cube->audio_system = audio_system_init();
+	else
+		cube->audio_system = NULL;
+}
+
+t_cube	*cube_cube_init(int argc, char **argv)
+{
+	t_cube			*cube;
+	t_parser_config	*parser_config;
+
+	parser_config = setup_parser(argc, argv);
+	cube = malloc(sizeof(t_cube));
+	if (!cube)
+		return (NULL);
+	setup_cube_components(cube, parser_config);
+	setup_audio(cube);
 	free_parser_config(parser_config, NULL, NULL);
 	return (cube);
 }

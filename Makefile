@@ -32,7 +32,9 @@ endif
 # Source files
 SRC_COMMON := src/main.c src/utils/utils.c src/settings/textures.c \
               src/settings/settings.c src/settings/map.c src/settings/args.c \
-              src/settings/animated_sprites.c src/runtime/runtime.c \
+              src/settings/animated_sprites.c src/settings/map_utils.c \
+			  src/settings/textures_free.c src/runtime/runtime.c \
+			  src/settings/textures_utils.c \
               src/mlx/mlx_handler.c src/map/map_utils.c src/map/map.c \
               src/lifecycle/lifecycle_animation.c src/lifecycle/lifecycle.c \
               src/intro/intro.c src/input_handler/input_handler_mouse.c \
