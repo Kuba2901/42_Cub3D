@@ -19,7 +19,7 @@
 		"type": "cppdbg",
 		"request": "launch",
 		"program": "${workspaceFolder}/CUB3D",
-		"args": ["config_maps/config1.cub"],
+		"args": ["assets/maps/bonus.cub"],
 		"stopAtEntry": false,
 		"cwd": "${workspaceFolder}",
 		"environment": [],
