@@ -2,7 +2,7 @@ CUB3D
 
 DEVELOPMENT TEAM
 Graphical part: Jakub Nenczak (jnenczak)
-Parsing part: Gabriele Romiti (grom)
+Parsing part: Gabriele Romiti (gromiti)
 
 ASSETS
 Mushroom Sprite Author: https://monopixelart.itch.io
