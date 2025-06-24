@@ -68,27 +68,34 @@ SRC_MANDATORY := src/parse/parse_texture_mandatory.c src/parse/parse_map_mandato
 SRC_BONUS := src/parse/parse_texture_bonus.c src/parse/parse_map_bonus.c \
              src/parse/parse_bonus.c src/parse/init_bonus.c
 
-# Object and dependency files
-OBJS_COMMON := $(SRC_COMMON:.c=.o)
-OBJS_MANDATORY := $(SRC_MANDATORY:.c=.o)
-OBJS_BONUS := $(SRC_BONUS:.c=.o)
-DEPS := $(SRC_COMMON:.c=.d) $(SRC_MANDATORY:.c=.d) $(SRC_BONUS:.c=.d)
+# Object and dependency directories
+OBJS_DIR_MANDATORY := obj/mandatory
+OBJS_DIR_BONUS := obj/bonus
 
--include $(DEPS)
+# Object and dependency files
+OBJS_COMMON_MANDATORY := $(addprefix $(OBJS_DIR_MANDATORY)/, $(SRC_COMMON:.c=.o))
+OBJS_MANDATORY_MANDATORY := $(addprefix $(OBJS_DIR_MANDATORY)/, $(SRC_MANDATORY:.c=.o))
+OBJS_COMMON_BONUS := $(addprefix $(OBJS_DIR_BONUS)/, $(SRC_COMMON:.c=.o))
+OBJS_BONUS_BONUS := $(addprefix $(OBJS_DIR_BONUS)/, $(SRC_BONUS:.c=.o))
+
+DEPS_MANDATORY := $(OBJS_COMMON_MANDATORY:.o=.d) $(OBJS_MANDATORY_MANDATORY:.o=.d)
+DEPS_BONUS := $(OBJS_COMMON_BONUS:.o=.d) $(OBJS_BONUS_BONUS:.o=.d)
+
+# Include dependency files
+-include $(DEPS_MANDATORY)
+-include $(DEPS_BONUS)
 
 # Default target
 all: $(NAME)
 
 # Mandatory version
-$(NAME): CFLAGS += -D CUBE_MANDATORY=1
-$(NAME): $(OBJS_COMMON) $(OBJS_MANDATORY) | libraries
-	@$(CC) $(CFLAGS) $^ $(LIBS) -o $@
+$(NAME): $(OBJS_COMMON_MANDATORY) $(OBJS_MANDATORY_MANDATORY) | libraries
+	@$(CC) $(CFLAGS) -D CUBE_MANDATORY=1 $^ $(LIBS) -o $@
 	@echo "✅ $(NAME) built successfully!"
 
 # Bonus version
-bonus: CFLAGS += -D CUBE_BONUS=1
-bonus: $(OBJS_COMMON) $(OBJS_BONUS) | libraries
-	@$(CC) $(CFLAGS) $^ $(LIBS) -o $(NAME)
+bonus: $(OBJS_COMMON_BONUS) $(OBJS_BONUS_BONUS) | libraries
+	@$(CC) $(CFLAGS) -D CUBE_BONUS=1 $^ $(LIBS) -o $(NAME)
 	@echo "✅ $(NAME) (bonus) built successfully!"
 
 # Libraries
@@ -100,11 +107,16 @@ $(LIBLIBFT)/libft.a:
 $(LIBMLX)/libmlx.a: | configure
 	@cd $(LIBMLX) && make
 
-# Compilation rule
-%.o: %.c
+# Compilation rules
+$(OBJS_DIR_MANDATORY)/%.o: %.c
 	@mkdir -p $(dir $@)
-	@$(CC) $(CFLAGS) -c $< -o $@ $(HEADERS)
-	@printf "Compiling: $(notdir $<)\n"
+	@$(CC) $(CFLAGS) -D CUBE_MANDATORY=1 -c $< -o $@ $(HEADERS)
+	@printf "Compiling (mandatory): $(notdir $<)\n"
+
+$(OBJS_DIR_BONUS)/%.o: %.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) -D CUBE_BONUS=1 -c $< -o $@ $(HEADERS)
+	@printf "Compiling (bonus): $(notdir $<)\n"
 
 # Setup dependencies
 configure:
@@ -123,7 +135,7 @@ valgrind: $(NAME)
 
 # Clean targets
 clean:
-	@rm -f $(OBJS_COMMON) $(OBJS_MANDATORY) $(OBJS_BONUS) $(DEPS)
+	@rm -rf $(OBJS_DIR_MANDATORY) $(OBJS_DIR_BONUS)
 	@cd $(LIBLIBFT) && make clean 2>/dev/null || true
 	@cd $(LIBMLX) && make clean 2>/dev/null || true
 
