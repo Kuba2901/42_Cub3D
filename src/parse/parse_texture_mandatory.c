@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_texture_mandatory.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 15:29:31 by gromiti           #+#    #+#             */
-/*   Updated: 2025/06/23 17:47:20 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/25 12:12:09 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 void	parse_texture(t_parser_config *parser_config,
 						t_tex_type_mandatory tex_type, char *line)
 {
+	if (parser_config->textures_paths[tex_type])
+		free_parser_config(parser_config, line,
+			"Error\nTexture path already set\n");
 	parser_config->textures_paths[tex_type] = ft_strdup(line);
 	if (!parser_config->textures_paths[tex_type])
 		free_parser_config(parser_config, line,
@@ -99,4 +102,7 @@ void	check_parsed_mandatory_textures(t_parser_config *parser_config)
 			free_parser_config(parser_config, NULL,
 				"Error\nMissing texture path\n");
 	}
+	if (parser_config->textures_paths[i])
+		free_parser_config(parser_config, NULL,
+			"Error\nToo many texture paths\n");
 }
