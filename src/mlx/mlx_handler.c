@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:01:51 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 12:18:59 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/24 12:30:00 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,19 @@ t_image_data	*mlx_img_image_data_init(t_mlx_handler *mlx_handler)
 	if (!image_data)
 		return (NULL);
 	image_data->img = NULL;
+	image_data->addr = NULL;
 	return (image_data);
 }
 
-void	mlx_img_image_data_free(t_mlx_handler *mlx_handler,
-	t_image_data *image_data)
+void	mlx_img_image_data_free(t_mlx_handler *mlx_handler)
 {
-	mlx_destroy_image(mlx_handler->mlx, image_data->img);
-	safe_free(image_data);
+	if (mlx_handler && mlx_handler->mlx_img)
+	{
+		if (mlx_handler->mlx_img->img)
+			mlx_destroy_image(mlx_handler->mlx, mlx_handler->mlx_img->img);
+		free(mlx_handler->mlx_img);
+		mlx_handler->mlx_img = NULL;
+	}
 }
 
 t_mlx_handler	*mlx_mlx_handler_init( void )
@@ -48,11 +53,19 @@ t_mlx_handler	*mlx_mlx_handler_init( void )
 	return (mlx_handler);
 }
 
-void	mlx_mlx_handler_free(t_mlx_handler *mlx_handler)
+void	mlx_mlx_handler_free(t_mlx_handler **mlx_handler)
 {
-	mlx_img_image_data_free(mlx_handler, mlx_handler->mlx_img);
-	mlx_destroy_window(mlx_handler->mlx, mlx_handler->mlx_win);
-	mlx_destroy_display(mlx_handler->mlx);
-	safe_free(mlx_handler->mlx);
-	safe_free(mlx_handler);
+	if (mlx_handler && *mlx_handler)
+	{
+		mlx_img_image_data_free(*mlx_handler);
+		if ((*mlx_handler)->mlx_win)
+			mlx_destroy_window((*mlx_handler)->mlx, (*mlx_handler)->mlx_win);
+		if ((*mlx_handler)->mlx)
+		{
+			mlx_destroy_display((*mlx_handler)->mlx);
+			free((*mlx_handler)->mlx);
+		}
+		free(*mlx_handler);
+		*mlx_handler = NULL;
+	}
 }

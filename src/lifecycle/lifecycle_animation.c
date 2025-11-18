@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 21:15:00 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/11 16:18:04 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/14 19:24:55 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ void	lifecycle_animate_sprites(t_cube *cube)
 	double			current_time;
 
 	current_time = lifecycle_get_ticks();
+	if (!cube->entities || !cube->entities->enemies)
+		return ;
 	if (current_time - last_time >= 250)
 	{
 		i = -1;

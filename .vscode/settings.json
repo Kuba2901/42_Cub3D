@@ -47,6 +47,11 @@
 		"locale": "c",
 		"cube_sprites.h": "c",
 		"miniaudio.h": "c",
-		"cube_audio.h": "c"
+		"cube_audio.h": "c",
+		"string.h": "c",
+		"cube_settings_args.h": "c",
+		"parse_mandatory.h": "c",
+		"parse_bonus.h": "c",
+		"parse_map_utils.h": "c"
 	}
 }

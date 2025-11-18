@@ -1,0 +1,13 @@
+NO ./assets/textures/biohazard/xpm/environment/wall_north.xpm
+SO ./assets/textures/biohazard/xpm/environment/wall_south.xpm
+EA ./assets/textures/biohazard/xpm/environment/wall_east.xpm
+WE ./assets/textures/biohazard/xpm/environment/wall_west.xpm
+F 255,255,255
+C 255,255,255
+
+111111
+100101
+101001
+1100E1
+110001
+111111

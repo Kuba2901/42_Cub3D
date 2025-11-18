@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intro.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 11:52:46 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 12:19:53 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/24 15:07:25 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,16 @@ void	intro_display(t_cube *cube)
 {
 	t_mlx_handler	*mlx_handler;
 	t_image_data	*image_data;
+	t_image_data	*old_image_data;
 
 	mlx_handler = cube->mlx_handler;
+	old_image_data = mlx_handler->mlx_img;
+	if (old_image_data)
+	{
+		if (old_image_data->img)
+			mlx_destroy_image(mlx_handler->mlx, old_image_data->img);
+		free(old_image_data);
+	}
 	image_data = intro_init(cube);
 	cube->mlx_handler->mlx_img = image_data;
 	mlx_put_image_to_window(mlx_handler->mlx, mlx_handler->mlx_win,

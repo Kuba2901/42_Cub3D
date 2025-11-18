@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/10 17:08:17 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/10 19:56:17 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/06/23 17:05:34 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,26 +22,42 @@
 #include <cube_minimap.h>
 #include <cube_animations.h>
 #include <cube_settings_animated_sprites.h>
+#include <cube.h>
+
+static unsigned int	get_color_from_rgb(t_tex_color color)
+{
+	return ((color.r << 16) | (color.g << 8) | color.b);
+}
+
+static void	draw_set_iter_data(t_draw_horizontal_data *dhd)
+{
+	dhd->cell_x = (int)(dhd->floor_x);
+	dhd->cell_y = (int)(dhd->floor_y);
+	dhd->texture_x = (int)(TEXTURE_SIZE
+			* (dhd->floor_x - dhd->cell_x)) & (TEXTURE_SIZE - 1);
+	dhd->texture_y = (int)(TEXTURE_SIZE
+			* (dhd->floor_y - dhd->cell_y)) & (TEXTURE_SIZE - 1);
+	dhd->floor_x += dhd->floor_step_x;
+	dhd->floor_y += dhd->floor_step_y;
+}
 
 static void	draw_render_floor(t_cube *cube, t_draw_horizontal_data *dhd, int y)
 {
-	int		x;
-	size_t	**textures;
+	int			x;
+	size_t		**textures;
+	t_tex_color	color;
 
 	textures = cube->cube_settings->tex_config->textures;
+	color = cube->cube_settings->tex_config->floor_color;
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
-		dhd->cell_x = (int)(dhd->floor_x);
-		dhd->cell_y = (int)(dhd->floor_y);
-		dhd->texture_x = (int)(TEXTURE_SIZE
-				* (dhd->floor_x - dhd->cell_x)) & (TEXTURE_SIZE - 1);
-		dhd->texture_y = (int)(TEXTURE_SIZE
-				* (dhd->floor_y - dhd->cell_y)) & (TEXTURE_SIZE - 1);
-		dhd->floor_x += dhd->floor_step_x;
-		dhd->floor_y += dhd->floor_step_y;
-		dhd->color = textures[TEX_TYPE_FLOOR]
-		[TEXTURE_SIZE * dhd->texture_y + dhd->texture_x];
+		draw_set_iter_data(dhd);
+		if (!CUBE_BONUS)
+			dhd->color = get_color_from_rgb(color);
+		else
+			dhd->color = textures[TEX_TYPE_FLOOR]
+			[TEXTURE_SIZE * dhd->texture_y + dhd->texture_x];
 		dhd->color = (dhd->color >> 1) & 8355711;
 		draw_my_mlx_pixel_put(cube->mlx_handler->mlx_img, x, y, dhd->color);
 	}
@@ -50,23 +66,21 @@ static void	draw_render_floor(t_cube *cube, t_draw_horizontal_data *dhd, int y)
 static void	draw_render_ceiling(t_cube *cube,
 	t_draw_horizontal_data *dhd, int y)
 {
-	int		x;
-	size_t	**textures;
+	int			x;
+	size_t		**textures;
+	t_tex_color	color;
 
 	textures = cube->cube_settings->tex_config->textures;
+	color = cube->cube_settings->tex_config->ceiling_color;
 	x = -1;
 	while (++x < WINDOW_WIDTH)
 	{
-		dhd->cell_x = (int)(dhd->floor_x);
-		dhd->cell_y = (int)(dhd->floor_y);
-		dhd->texture_x = (int)(TEXTURE_SIZE
-				* (dhd->floor_x - dhd->cell_x)) & (TEXTURE_SIZE - 1);
-		dhd->texture_y = (int)(TEXTURE_SIZE
-				* (dhd->floor_y - dhd->cell_y)) & (TEXTURE_SIZE - 1);
-		dhd->floor_x += dhd->floor_step_x;
-		dhd->floor_y += dhd->floor_step_y;
-		dhd->color = textures[TEX_TYPE_CEILING]
-		[TEXTURE_SIZE * dhd->texture_y + dhd->texture_x];
+		draw_set_iter_data(dhd);
+		if (!CUBE_BONUS)
+			dhd->color = get_color_from_rgb(color);
+		else
+			dhd->color = textures[TEX_TYPE_CEILING]
+			[TEXTURE_SIZE * dhd->texture_y + dhd->texture_x];
 		dhd->color = (dhd->color >> 1) & 8355711;
 		draw_my_mlx_pixel_put(cube->mlx_handler->mlx_img,
 			x, WINDOW_HEIGHT - y - 1, dhd->color);

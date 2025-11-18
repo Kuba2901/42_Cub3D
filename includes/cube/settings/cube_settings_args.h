@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   cube_settings_args.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/25 10:38:18 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/25 10:38:37 by dpalmese         ###   ########.fr       */
+/*   Created: 2025/05/09 17:03:13 by gromiti           #+#    #+#             */
+/*   Updated: 2025/05/09 17:15:43 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-void	ft_strrev(char *str)
-{
-	int		i;
-	int		size;
-	char	tmp;
+#ifndef CUBE_SETTINGS_ARGS_H
+# define CUBE_SETTINGS_ARGS_H
 
-	i = 0;
-	size = ft_strlen(str) - 1;
-	while (i < size)
-	{
-		tmp = str[i];
-		str[i] = str[size];
-		str[size] = tmp;
-		i++;
-		size--;
-	}
-}
+# include <cube.h>
+# include <libft.h>
+
+void	check_extension(char *filename);
+void	check_args(int argc, char **argv);
+
+#endif

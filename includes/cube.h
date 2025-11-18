@@ -6,7 +6,7 @@
 /*   By: jnenczak <jnenczak@student.42roma.it>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 21:26:12 by jnenczak          #+#    #+#             */
-/*   Updated: 2025/05/12 12:00:39 by jnenczak         ###   ########.fr       */
+/*   Updated: 2025/05/14 19:07:19 by jnenczak         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@ typedef struct s_audio_system		t_audio_system;
 
 # define CUBE_SECOND_IN_US 1000000
 
+# ifndef CUBE_BONUS
+#  define CUBE_BONUS 0
+# endif
+
 typedef struct s_cube
 {
 	t_cube_settings		*cube_settings;
@@ -36,8 +40,7 @@ typedef struct s_cube
 	t_audio_system		*audio_system;
 }	t_cube;
 
-t_cube	*cube_cube_init(char **map, int width, int height,
-			const char **tex_paths);
+t_cube	*cube_cube_init(int argc, char **argv);
 void	cube_cube_free(t_cube *cube);
 
 #endif

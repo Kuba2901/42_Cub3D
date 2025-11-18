@@ -3,26 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpalmese <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: gromiti <gromiti@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/21 16:12:52 by dpalmese          #+#    #+#             */
-/*   Updated: 2024/01/21 16:15:32 by dpalmese         ###   ########.fr       */
+/*   Created: 2024/01/21 15:25:46 by gromiti           #+#    #+#             */
+/*   Updated: 2024/01/22 17:59:13 by gromiti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *n)
 {
-	t_list	*first;
-
-	if (!lst || !new)
-		return ;
-	first = *lst;
-	if (first)
+	if (lst)
 	{
-		new->next = first;
-		*lst = new;
+		if (*lst)
+		{
+			n->next = *lst;
+		}
+		*lst = n;
 	}
-	else
-		*lst = new;
 }
