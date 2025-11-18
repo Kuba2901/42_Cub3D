@@ -97,16 +97,15 @@ This produces a fast, deterministic pseudo-3D environment.
 ## Compilation
 
 ```
-make            # build cub3d
+make bonus      # build cub3d with bonus settings
 make clean      # object files
 make fclean     # full cleanup
-make re         # rebuild
 ```
 
 Run with:
 
 ```
-./cub3d assets/maps/mandatory.cub
+./cub3d assets/maps/bonus.cub
 ```
 
 ---
